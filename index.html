@@ -501,7 +501,7 @@
         <div class="btn-row"><label for="compSel" style="font-weight:600;font-size:.88rem;color:var(--regal-navy)">Resaltar la ventana oficial de:</label>
           <select id="compSel"><option value="0">C1</option><option value="1">C2</option><option value="2" selected>C3</option><option value="3">C4</option><option value="4">C5</option></select></div>
         <div class="chart-box tall"><canvas id="t4Temp"></canvas></div>
-        <p class="chart-cap"><b>Datos:</b> los rangos de trabajo (banda sombreada) son los oficiales de Pirelli para 2019: C1 110–140 °C, C2 110–135 °C, C3 105–135 °C, C4 90–120 °C y C5 85–115 °C. La forma de las curvas es <b>calculada por mí</b> con un modelo declarado: \(\mu(T) = \mu_{pico}\cdot 0{,}95^{\left((T-T_c)/w\right)^2}\), donde \(T_c\) es el centro del rango y \(w\) su semiancho, de modo que en los bordes oficiales el agarre cae al 95 % del pico. Los valores de \(\mu_{pico}\) (1,62 a 1,78) son ilustrativos: Pirelli no los publica.</p>
+        <p class="chart-cap"><b>Datos:</b> los rangos de trabajo (banda sombreada) son los oficiales de Pirelli para 2019: C1 110–140 °C, C2 110–135 °C, C3 105–135 °C, C4 90–120 °C y C5 85–115 °C. La forma de las curvas es <b>calculada por Anthropic. (2026). Claude (versión Opus 5.5)</b> con un modelo declarado: \(\mu(T) = \mu_{pico}\cdot 0{,}95^{\left((T-T_c)/w\right)^2}\), donde \(T_c\) es el centro del rango y \(w\) su semiancho, de modo que en los bordes oficiales el agarre cae al 95 % del pico. Los valores de \(\mu_{pico}\) (1,62 a 1,78) son ilustrativos: Pirelli no los publica.</p>
       </div>
 
       <h3 style="margin-top:22px">Gráfica 2 · Fuerza lateral máxima en función de la carga vertical</h3>
@@ -512,7 +512,7 @@
         </div>
         <div class="chart-box tall"><canvas id="t4Load"></canvas></div>
         <div class="readout" id="t4Readout"></div>
-        <p class="chart-cap"><b>Datos:</b> calculados por mí con el término de agarre máximo de la Magic Formula (Pacejka y Besselink, 2012), con parámetros ilustrativos \(p_{Dy1} = 1{,}70\), \(p_{Dy2} = -0{,}20\) y \(F_{z0} = 3000\ \text{N}\), y un eje con 6000 N repartidos entre dos llantas. La línea de Coulomb usa \(\mu = 1{,}70\) constante.</p>
+        <p class="chart-cap"><b>Datos:</b> calculados  con el término de agarre máximo de la Magic Formula (Pacejka y Besselink, 2012), con parámetros ilustrativos \(p_{Dy1} = 1{,}70\), \(p_{Dy2} = -0{,}20\) y \(F_{z0} = 3000\ \text{N}\), y un eje con 6000 N repartidos entre dos llantas. La línea de Coulomb usa \(\mu = 1{,}70\) constante.</p>
       </div>
       <div class="note"><strong>Qué observar:</strong> en la curva de Coulomb, duplicar la carga duplica el agarre. En la llanta real no: con 6000 N de carga da unos 9000 N de fuerza lateral, en lugar de los 10 200 N que predice Coulomb. Por eso, cuando en una curva la carga pasa de la llanta interior a la exterior (mueva el control), la exterior gana menos de lo que pierde la interior, y el eje en conjunto agarra menos. Con ΔF<sub>z</sub> = 1500 N, el agarre total baja de 10 200 N a 9900 N (−2,9 %).</div>
     </div>
