@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portafolio de evidencias · Física I</title>
+  <meta name="description" content="Portafolio de evidencias de Física I (FUN-18, CENFOTEC): aplicaciones de la cinemática y la dinámica en el desarrollo de software.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23042255%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2214%22 fill=%22none%22 stroke=%22%23ff97cc%22 stroke-width=%225%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%225%22 fill=%22%23f35d9c%22/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="lib/katex/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<button class="btn menu-btn" id="menuBtn" aria-controls="sidebar" aria-expanded="false">☰ Temas</button>
+
+<!-- ================= NAVEGACIÓN ================= -->
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#inicio">
+    <div class="brand-kicker">Física I · FUN-18</div>
+    <div class="brand-title">La física detrás del software</div>
+  </a>
+
+  <ol>
+    <li><a class="nav-link" href="#inicio"><span class="num">★</span>Inicio y cómo leer el portafolio</a></li>
+    <li><a class="nav-link" href="#conexiones"><span class="num">↔</span>Mapa de conexiones entre temas</a></li>
+  </ol>
+
+  <div class="nav-group">Avance 1 · Cinemática y Dinámica</div>
+  <ol>
+    <li><a class="nav-link" href="#tema-1"><span class="num">1</span>Rastreo y navegación de un dron de reparto</a></li>
+    <li><a class="nav-link" href="#tema-2"><span class="num">2</span>El salto del personaje: cómo los motores de juego falsean la gravedad</a></li>
+    <li><a class="nav-link" href="#tema-3"><span class="num">3</span>Gravedad artificial por rotación en hábitats espaciales</a></li>
+    <li><a class="nav-link" href="#tema-4"><span class="num">4</span>Llantas de Fórmula 1: la ventana de temperatura y el agarre</a></li>
+    <li><a class="nav-link" href="#tema-5"><span class="num">5</span>El resorte virtual detrás de un control háptico</a></li>
+  </ol>
+
+  <div class="nav-group">Avance 2 <span class="pill soon">Próximamente</span></div>
+  <ol>
+    <li><a class="nav-link future" href="#avance-2"><span class="num">6</span>Frenado regenerativo en un vehículo eléctrico</a></li>
+    <li><a class="nav-link future" href="#avance-2"><span class="num">7</span>El coeficiente de restitución en un motor de videojuego</a></li>
+    <li><a class="nav-link future" href="#avance-2"><span class="num">8</span>Ruedas de reacción en satélites</a></li>
+    <li><a class="nav-link future" href="#avance-2"><span class="num">9</span>Asistencia gravitatoria de la Voyager</a></li>
+  </ol>
+
+  <div class="nav-group">Entrega final <span class="pill soon">Próximamente</span></div>
+  <ol>
+    <li><a class="nav-link future" href="#entrega-final"><span class="num">10</span>Spring animations en interfaces</a></li>
+    <li><a class="nav-link future" href="#entrega-final"><span class="num">11</span>Síntesis de sonido y armónicos</a></li>
+    <li><a class="nav-link future" href="#entrega-final"><span class="num">12</span>Resonancia estructural y Tacoma Narrows</a></li>
+    <li><a class="nav-link future" href="#entrega-final"><span class="num">13</span>Enfriamiento líquido de un centro de datos</a></li>
+  </ol>
+
+  <ol style="margin-top:18px">
+    <li><a class="nav-link" href="#referencias"><span class="num">§</span>Referencias</a></li>
+  </ol>
+
+  <div class="sidebar-foot">
+    Universidad CENFOTEC · 2026-C3<br>
+    <a href="https://github.com/USUARIO/portafolio-fisica" id="repoLinkSide">Repositorio público ↗</a>
+  </div>
+</aside>
+
+<main>
+<!-- ================= PORTADA ================= -->
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="kicker">Portafolio de evidencias · Avance 1</div>
+    <h1>La física <em>detrás</em> del software</h1>
+    <p class="lead">Cinco casos reales donde la cinemática y la dinámica que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el gatillo de un control de videojuego. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
+    <div class="meta-grid">
+      <div class="meta"><small>Estudiante</small><span>Paz Naranjo</span></div>
+      <div class="meta"><small>Curso</small><span>FUN-18 · Física I · FCV1</span></div>
+      <div class="meta"><small>Docente</small><span>Andrés Castro Núñez</span></div>
+      <div class="meta"><small>Periodo</small><span>2026-C3 · CENFOTEC</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section class="block">
+  <h2 class="section-title">Cómo leer este portafolio</h2>
+  <p class="section-sub">El portafolio es acumulativo: crece en tres avances hasta cubrir los trece temas del curso. Todas las entradas siguen la misma estructura, para que cualquier tema se pueda revisar igual.</p>
+  <div class="grid-3">
+    <div class="card"><div class="part-label"><span class="letter">a</span>Caso de uso</div>
+      <p style="margin:6px 0 0;font-size:.93rem">(i) El <b>caso concreto</b> con producto, sistema o industria; (ii) el <b>concepto físico</b> como ecuación explícita; (iii) la <b>justificación</b> frente a alternativas no físicas, con lo que se gana y lo que cuesta.</p></div>
+    <div class="card"><div class="part-label"><span class="letter">b</span>Recurso de apoyo</div>
+      <p style="margin:6px 0 0;font-size:.93rem">El tipo prescrito para cada tema (visualización, simulación, diagrama o multimedia con análisis), elaborado por mí y con fuentes citadas.</p></div>
+    <div class="card"><div class="part-label"><span class="letter">↔</span>Conexiones</div>
+      <p style="margin:6px 0 0;font-size:.93rem">Al final de cada tema se señala cómo se relaciona con otros temas del portafolio y con lo visto en clase.</p></div>
+  </div>
+</section>
+
+<section class="block" id="conexiones">
+  <h2 class="section-title">Mapa de conexiones entre temas</h2>
+  <p class="section-sub">Los cinco temas del Avance 1 no son ideas sueltas: comparten ecuaciones y decisiones de diseño.</p>
+  <div class="card table-scroll">
+    <table class="data">
+      <thead><tr><th>Temas</th><th>Idea física compartida</th><th>Qué enseña la comparación</th></tr></thead>
+      <tbody>
+        <tr><td>1 ↔ 2</td><td>Vectores \(\vec r,\ \vec v,\ \vec a\) y descomposición en componentes</td><td>El salto es el caso particular de aceleración constante \(\vec a = (0,-g)\); la ruta del dron tiene \(\vec a(t)\) variable.</td></tr>
+        <tr><td>2 ↔ 3</td><td>“Gravedad de diseño”</td><td>En el juego, \(g\) se elige libremente; en el hábitat, \(g_{ap}=\omega^2 r\) es consecuencia del radio y del giro.</td></tr>
+        <tr><td>3 ↔ 4</td><td>Movimiento circular y fuerza centrípeta</td><td>En una curva, la fuerza centrípeta del F1 la aporta la fricción: \(\mu N \ge m v^2/R \Rightarrow v_{máx}=\sqrt{\mu g R}\).</td></tr>
+        <tr><td>4 ↔ 5</td><td>Leyes de fuerza lineales que fallan en los extremos</td><td>Coulomb (\(f=\mu N\)) y Hooke (\(F=-kx\)) son aproximaciones lineales; el software real añade saturación y no linealidad.</td></tr>
+        <tr><td>2 ↔ 5</td><td>Integración numérica y paso de tiempo</td><td>Un salto y un resorte virtual se calculan en pasos discretos; ese paso limita la estabilidad y hace que el resultado dependa de la frecuencia de cálculo.</td></tr>
+        <tr><td>1 ↔ 5</td><td>Tercera ley de Newton</td><td>Las hélices empujan aire hacia abajo y el aire empuja al dron; el gatillo empuja al dedo con la misma fuerza con que el dedo lo empuja.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- TEMA 1                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-1">
+  <div class="tema-head">
+    <div class="tema-num">1</div>
+    <div>
+      <div class="eyebrow">Cinemática en 2D</div>
+      <h2>Tema 1 — Rastreo y navegación de un dron de reparto</h2>
+      <div class="tags"><span class="pill res">Recurso: Visualización de datos</span><span class="pill">Vectores · componentes</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>Los drones de reparto comerciales (Wing, Zipline, Amazon Prime Air) y muchos drones industriales vuelan con un autopiloto que debe responder dos preguntas cientos de veces por segundo: <em>¿dónde estoy?</em> y <em>¿cómo llego al siguiente punto?</em> En el autopiloto de código abierto <b>PX4</b>, el estimador de navegación <b>EKF2</b> predice la posición y la velocidad integrando las mediciones de la unidad inercial (IMU) y luego corrige esa predicción con las lecturas del GPS. Del lado de la planificación, los generadores de trayectorias para multirrotores (por ejemplo, el método de Mellinger y Kumar) describen la ruta como funciones polinómicas del tiempo, <b>una por cada componente</b>: \(x(t)\) y \(y(t)\) por separado.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>La posición es un vector que se descompone en componentes, y la velocidad y la aceleración son sus derivadas:</p>
+      <div class="eq">\[ \vec r(t) = x(t)\,\hat\imath + y(t)\,\hat\jmath, \qquad \vec v = \frac{d\vec r}{dt} = v_x\hat\imath + v_y\hat\jmath, \qquad \vec a = \frac{d\vec v}{dt} = a_x\hat\imath + a_y\hat\jmath \]</div>
+      <p>El paso de predicción de un estimador como EKF2 es, en esencia, cinemática con aceleración constante durante un intervalo muy corto \(\Delta t\), aplicada componente por componente:</p>
+      <div class="eq">\[ \vec v_{k+1} = \vec v_k + \vec a_k\,\Delta t, \qquad \vec r_{k+1} = \vec r_k + \vec v_k\,\Delta t + \tfrac12\,\vec a_k\,\Delta t^2 \]</div>
+      <p>Para la ruta de la visualización usé un perfil de <b>mínimo tirón</b> (minimum jerk) en cada tramo de longitud \(L\) y duración \(T\), con \(\tau = t/T\):</p>
+      <div class="eq">\[ s(\tau) = L\,(10\tau^3 - 15\tau^4 + 6\tau^5), \qquad v_{máx} = \tfrac{15}{8}\,\frac{L}{T}, \qquad a_{máx} = \tfrac{10\sqrt3}{3}\,\frac{L}{T^2} \]</div>
+
+      <h4><span class="i">(iii)</span>¿Por qué modelar la física y no usar valores fijos?</h4>
+      <p>La alternativa “no física” más simple es ordenar al dron que vaya en línea recta a velocidad fija entre puntos de paso. Pero en cada esquina la velocidad cambiaría de golpe, lo que implica una aceleración teóricamente infinita: ningún motor la puede producir, así que el dron se pasaría de la ruta. Una trayectoria precalculada y reproducida tal cual tampoco sirve, porque el viento, el peso del paquete o un cambio de destino obligan a recalcular en vuelo. Modelar \(\vec r(t)\), \(\vec v(t)\) y \(\vec a(t)\) permite garantizar que la aceleración pedida nunca supere lo que los motores pueden dar, y estimar la posición <em>entre</em> lecturas de GPS, que llegan mucho más despacio que las de la IMU.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Trayectorias que el vehículo sí puede seguir (aceleración acotada y continua).</li>
+          <li>Posición estimada a alta frecuencia aunque el GPS sea lento o se pierda unos segundos.</li>
+          <li>Recalcular la ruta en vuelo con las mismas ecuaciones.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Integrar acumula error: un sesgo de acelerómetro \(b\) produce un error \(\tfrac12 b t^2\). Con \(b = 0{,}05\ \text{m/s}^2\), en 10 s sin GPS el error es de 2,5 m.</li>
+          <li>Por eso hace falta fusión de sensores (filtro de Kalman), que es más compleja y requiere ajuste.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: visualización de datos</div>
+      <h3>Perfiles de posición, velocidad y aceleración de una ruta de reparto</h3>
+      <p><b>Ruta declarada</b> (marco local plano, origen en el centro de distribución, eje \(x\) al este y eje \(y\) al norte). El dron se detiene 4 s en cada punto de control para girar, como hace un multirrotor en una esquina cerrada.</p>
+      <div class="table-scroll"><table class="data" id="routeTable">
+        <thead><tr><th>Tramo</th><th>Desde → hasta (m)</th><th>Longitud L</th><th>Duración T</th><th>v<sub>máx</sub></th><th>a<sub>máx</sub></th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+
+      <div class="resource">
+        <div class="controls" style="grid-template-columns:1fr auto">
+          <div class="ctrl"><label for="t1Slider"><span>Instante analizado</span> <output id="t1Out">0,0 s</output></label>
+            <input type="range" id="t1Slider" min="0" max="124" step="0.5" value="22"></div>
+          <div class="btn-row"><button class="btn" id="t1Play">▶ Reproducir vuelo</button><button class="btn ghost" id="t1Csv">Descargar datos (CSV)</button></div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="chart-box tall"><canvas id="t1Map"></canvas></div>
+            <p class="chart-cap">Vista en planta de la ruta. Las flechas son vectores velocidad \(\vec v\) cada 6 s (escala: 1 m/s = 4 m dibujados); el punto rosado es el dron en el instante elegido.</p>
+          </div>
+          <div>
+            <div class="chart-box mid" style="height:360px"><canvas id="t1Pos"></canvas></div>
+            <p class="chart-cap">Componentes de posición \(x(t)\), \(y(t)\) y distancia recorrida \(s(t)\).</p>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:12px">
+          <div><div class="chart-box mid"><canvas id="t1Vel"></canvas></div>
+            <p class="chart-cap">Velocidad: componentes \(v_x, v_y\) y rapidez \(|\vec v|\).</p></div>
+          <div><div class="chart-box mid"><canvas id="t1Acc"></canvas></div>
+            <p class="chart-cap">Aceleración: componentes \(a_x, a_y\) y magnitud \(|\vec a|\).</p></div>
+        </div>
+        <div class="readout" id="t1Readout"></div>
+        <p class="chart-cap" style="margin-top:12px"><b>Fuente de los datos:</b> datos calculados por mí a partir de la ruta declarada, con el perfil de mínimo tirón de Flash y Hogan (1985), muestreados cada 0,5 s. Se pueden descargar en CSV con el botón de arriba.</p>
+      </div>
+      <div class="note"><strong>Qué observar:</strong> en cada tramo, \(v_x\) y \(v_y\) guardan la misma proporción que \(\Delta x : \Delta y\), porque el dron va en línea recta. La rapidez tiene forma de campana (llega a cero en los puntos de control) y la aceleración cambia de signo a mitad del tramo: primero acelera y luego frena. En el tramo 2 \(v_y = 0\), porque solo hay movimiento hacia el este.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-2">Tema 2</a>: el salto de un personaje es esta misma cinemática con \(\vec a = (0,-g)\) constante. Con el <a href="#tema-4">Tema 4</a>: la aceleración máxima que se puede pedir en una curva la limita la fricción. En clase: descomposición vectorial y MRUA aplicados en intervalos pequeños \(\Delta t\).</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>PX4 Autopilot. <i>Using PX4's Navigation Filter (EKF2)</i>. <a href="https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html" target="_blank" rel="noopener">docs.px4.io</a></li>
+      <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. <i>IEEE ICRA</i>, 2520–2525.</li>
+      <li>Flash, T., y Hogan, N. (1985). The coordination of arm movements: an experimentally confirmed mathematical model. <i>Journal of Neuroscience, 5</i>(7), 1688–1703.</li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 2                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-2">
+  <div class="tema-head">
+    <div class="tema-num">2</div>
+    <div>
+      <div class="eyebrow">Caída libre y tiro parabólico</div>
+      <h2>Tema 2 — El salto del personaje: cómo los motores de juego falsean la gravedad</h2>
+      <div class="tags"><span class="pill res">Recurso: Simulación interactiva</span><span class="pill">MRUA vertical · parábola</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p><b>Celeste</b> (Maddy Makes Games, 2018) es uno de los plataformeros más elogiados por la sensación de su salto, y sus creadores publicaron el código de la clase <code>Player</code>. Ahí se ven las constantes que definen el salto: <code>Gravity = 900f</code> (px/s²), <code>JumpSpeed = -105f</code> (px/s), <code>MaxFall = 160f</code>, <code>VarJumpTime = .2f</code> (mientras se mantiene el botón, la velocidad de subida se sostiene hasta 0,2 s) y <code>HalfGravThreshold = 40f</code> (la gravedad se reduce a la mitad cerca de la cima). La caja de colisión de la protagonista mide 11 px de alto. Si se supone que mide unos 1,6 m (1 px ≈ 0,145 m), la gravedad del juego equivale a cerca de <b>131 m/s², unas 13 veces la de la Tierra</b>.</p>
+      <p>La misma idea aparece en la charla de Kyle Pittman en la GDC 2016, <i>Building a Better Jump</i>: el diseñador no elige \(g\); elige la <b>altura</b> y el <b>tiempo hasta la cima</b> que se sienten bien, y de ahí despeja \(g\) y la velocidad inicial. También es común usar una gravedad mayor al caer, como en Super Mario.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <div class="eq">\[ x(t) = x_0 + v_x t, \qquad y(t) = y_0 + v_0 t - \tfrac12 g t^2 \]</div>
+      <div class="eq">\[ H = \frac{v_0^2}{2g}, \qquad t_h = \frac{v_0}{g} \quad\Longrightarrow\quad g = \frac{2H}{t_h^2}, \qquad v_0 = \frac{2H}{t_h} \]</div>
+      <p>Con gravedad aumentada \(m\,g\) solo en la bajada, el tiempo total en el aire es \(t_{aire} = t_h + \sqrt{2H/(m g)}\).</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué no 9,81 m/s² y por qué no una animación?</h4>
+      <p>Con la gravedad real, un salto de 1 m de altura tarda 0,45 s en subir y 0,9 s en total, lo que se siente “flotante” en pantalla. Además, los personajes de juego saltan 2 o 3 veces su propia altura, algo imposible con \(g = 9{,}81\) sin una velocidad inicial enorme. Sin embargo, los juegos <b>no abandonan la física, la reajustan</b>: mantienen la parábola y cambian sus parámetros. Una animación guionizada (una curva fija dibujada a mano) no podría reaccionar a cuánto tiempo se mantiene el botón, a un choque con el techo a medio salto, a una plataforma móvil ni al control horizontal en el aire. Con las ecuaciones, cualquier combinación de entrada produce un vuelo coherente y predecible, que el jugador aprende a dominar.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Control del “feel” con dos números de diseño (\(H\) y \(t_h\)).</li>
+          <li>Trayectorias consistentes para cualquier entrada del jugador.</li>
+          <li>El jugador puede predecir dónde caerá.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Se calcula por pasos de tiempo: si el paso varía con los FPS, la altura del salto cambia. Por eso se usa un paso fijo (Fiedler, 2004).</li>
+          <li>Cada truco (gravedad variable, coyote time, salto variable) es una regla extra que hay que ajustar y probar.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: simulación interactiva</div>
+      <h3>Laboratorio de salto: ajuste la gravedad y el impulso</h3>
+      <p>Mueva los controles: la trayectoria se <b>recalcula en vivo</b> con las ecuaciones de arriba. La curva punteada azul es el mismo salto con la gravedad real (9,81 m/s²) como referencia. “Saltar” reproduce el salto <b>en tiempo real</b>, para sentir la diferencia de duración. El personaje mide 1 m.</p>
+      <div class="resource">
+        <canvas id="jumpCanvas" tabindex="0" aria-label="Simulación del salto de un personaje"></canvas>
+        <div class="controls">
+          <div class="ctrl"><label for="v0"><span>Impulso de salto, v₀</span> <output id="v0Out"></output></label><input type="range" id="v0" min="1" max="20" step="0.1" value="9"></div>
+          <div class="ctrl"><label for="grav"><span>Gravedad, g</span> <output id="gOut"></output></label><input type="range" id="grav" min="1" max="140" step="0.1" value="30"></div>
+          <div class="ctrl"><label for="fallMul"><span>Multiplicador de gravedad al caer, m</span> <output id="mOut"></output></label><input type="range" id="fallMul" min="1" max="3" step="0.05" value="1.6"></div>
+          <div class="ctrl"><label for="vx"><span>Velocidad horizontal, vₓ</span> <output id="vxOut"></output></label><input type="range" id="vx" min="1" max="14" step="0.1" value="5"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="jumpBtn">▶ Saltar (o barra espaciadora)</button>
+          <span style="font-size:.8rem;color:var(--ink-soft);margin-left:6px">Ajustes rápidos:</span>
+          <button class="btn ghost" data-preset="real">Tierra real</button>
+          <button class="btn ghost" data-preset="plat">Plataformero ágil</button>
+          <button class="btn ghost" data-preset="celeste">Celeste (convertido)</button>
+          <button class="btn ghost" data-preset="luna">Luna</button>
+        </div>
+        <div class="readout" id="jumpReadout"></div>
+
+        <div class="card" style="margin-top:16px;box-shadow:none;background:var(--pink-tint);border-color:#f7cfe2">
+          <div class="part-label" style="margin-bottom:0">Modo diseñador: de la sensación a la física</div>
+          <p style="font-size:.9rem;margin:4px 0 8px">Elija la altura y el tiempo hasta la cima que quiere que <em>se sientan</em>; la página despeja \(g = 2H/t_h^2\) y \(v_0 = 2H/t_h\).</p>
+          <div class="controls" style="margin:6px 0">
+            <div class="ctrl"><label for="dH"><span>Altura deseada, H</span> <output id="dHOut"></output></label><input type="range" id="dH" min="0.5" max="6" step="0.1" value="3"></div>
+            <div class="ctrl"><label for="dT"><span>Tiempo hasta la cima, t<sub>h</sub></span> <output id="dTOut"></output></label><input type="range" id="dT" min="0.2" max="0.9" step="0.01" value="0.35"></div>
+          </div>
+          <div class="btn-row"><span id="designOut" style="font-weight:700;color:var(--rosewood)"></span><button class="btn" id="applyDesign">Aplicar al salto</button></div>
+        </div>
+      </div>
+      <div class="note"><strong>Pruebe:</strong> con “Tierra real”, un salto de 1 m dura casi un segundo. Con “Plataformero ágil”, el personaje sube 3 m (tres veces su altura) en solo 0,35 s. La forma sigue siendo una parábola; lo que cambió fue \(g\). El ajuste “Celeste” usa las constantes del código fuente convertidas a metros (1 px ≈ 0,145 m). No modela el salto variable, así que equivale a un toque corto del botón: con el botón sostenido, el juego mantiene la subida 0,2 s más y el salto llega a unas 2,5 veces la altura del personaje.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-1">Tema 1</a>: es la cinemática 2D con \(\vec a\) constante, y las componentes \(x\) y \(y\) son independientes. Con el <a href="#tema-3">Tema 3</a>: aquí \(g\) se elige; en un hábitat rotatorio surge de \(\omega^2 r\). Con el <a href="#tema-5">Tema 5</a>: ambos dependen del paso de integración. En clase: caída libre y tiro parabólico (altura máxima, tiempo de vuelo y alcance).</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Thorson, M., y Berry, N. (2018). <i>Celeste — Player.cs</i> [código fuente]. <a href="https://github.com/NoelFB/Celeste/blob/master/Source/Player/Player.cs" target="_blank" rel="noopener">github.com/NoelFB/Celeste</a></li>
+      <li>Pittman, K. (2016). <i>Math for Game Programmers: Building a Better Jump</i>. GDC 2016. <a href="https://gdcvault.com/play/1023148/Math-for-Game-Programmers-Building" target="_blank" rel="noopener">GDC Vault</a></li>
+      <li>Fiedler, G. (2004). <i>Fix Your Timestep!</i> Gaffer On Games. <a href="https://gafferongames.com/post/fix_your_timestep/" target="_blank" rel="noopener">gafferongames.com</a></li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 3                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-3">
+  <div class="tema-head">
+    <div class="tema-num">3</div>
+    <div>
+      <div class="eyebrow">Movimiento circular uniforme</div>
+      <h2>Tema 3 — Gravedad artificial por rotación en hábitats espaciales</h2>
+      <div class="tags"><span class="pill res">Recurso: Diagrama</span><span class="pill">Aceleración centrípeta · ω · T</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>En el estudio de verano de NASA y Stanford de 1975 (publicado como <b>NASA SP-413, <i>Space Settlements: A Design Study</i></b>) se diseñó el <b>Toro de Stanford</b>: un anillo de alrededor de 830 m de radio que gira a <b>1 revolución por minuto</b> para dar gravedad casi terrestre en el piso exterior. Hoy ese tipo de diseño se explora con software paramétrico. Un ejemplo es <b>SpinCalc</b>, la calculadora de gravedad artificial de Theodore Hall, que a partir de \(r\) y la velocidad de giro calcula la gravedad aparente, el gradiente entre cabeza y pies y los efectos de Coriolis, y los compara con límites de confort humano. Los simuladores de vuelo espacial y los motores de juego que modelan estaciones giratorias necesitan las mismas ecuaciones para que un objeto soltado “caiga” correctamente.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <div class="eq">\[ \omega = \frac{2\pi}{T} = 2\pi f, \qquad v = \omega r, \qquad a_c = \omega^2 r = \frac{v^2}{r} \]</div>
+      <p>El piso empuja a la persona hacia el eje con la fuerza normal \(N = m\,\omega^2 r\); eso es lo que se percibe como peso. Así, la gravedad aparente es</p>
+      <div class="eq">\[ g_{ap} = \omega^2 r \quad\Longrightarrow\quad r = \frac{g}{\omega^2}, \qquad \text{rpm} = \frac{60}{2\pi}\sqrt{\frac{g}{r}} \]</div>
+      <p>Comprobación con el Toro de Stanford: \(\omega = 2\pi/60 = 0{,}1047\ \text{rad/s}\), así que \(g_{ap} = 0{,}01097 \times 830 \approx 9{,}1\ \text{m/s}^2 \approx 0{,}93\,g\).</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué modelar la rotación y no poner “g hacia abajo”?</h4>
+      <p>En un simulador o en una herramienta de diseño, lo más fácil sería aplicar una aceleración fija de 9,81 m/s² “hacia el piso”. Eso falla de tres maneras que solo aparecen al modelar el giro: (1) la gravedad cambia con la altura (\(g_{cabeza}/g_{pies} = 1 - h/r\)), (2) los objetos en movimiento sufren la aceleración de Coriolis \(a_{cor} = 2\omega v_{rel}\), por lo que una pelota lanzada “recto” se desvía, y (3) no se puede explorar el compromiso entre radio y rpm, que es justamente la decisión de diseño más cara: un radio grande es costoso de construir y muchas rpm marean.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Elegir \(r\) y rpm con números, no por intuición.</li>
+          <li>Predecir el mareo (Coriolis) y el gradiente antes de construir.</li>
+          <li>Simulaciones donde los objetos se mueven como en la realidad.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Trabajar en un marco que gira obliga a añadir fuerzas ficticias, o bien a simular en el marco inercial con restricciones, lo que es más complejo.</li>
+          <li>Los límites de confort (2 o 4 rpm) son empíricos y todavía se debaten.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: diagrama</div>
+      <h3>Esquema del hábitat con eje, radio, aceleración y ecuaciones</h3>
+      <div class="resource">
+        <svg class="diagram-svg" viewBox="0 0 780 540" role="img" aria-labelledby="dgTitle dgDesc">
+          <title id="dgTitle">Diagrama de un hábitat espacial rotatorio</title>
+          <desc id="dgDesc">Anillo que gira con velocidad angular omega alrededor de un eje central. Dos personas paradas en el piso exterior; la aceleración centrípeta y la normal apuntan al eje y la velocidad es tangente.</desc>
+          <defs>
+            <marker id="ahRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c80056"/></marker>
+            <marker id="ahPink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f35d9c"/></marker>
+            <marker id="ahNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#01336e"/></marker>
+            <marker id="ahBaby" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ff97cc"/></marker>
+          </defs>
+          <style>
+            .lbl{font:600 13px Montserrat,sans-serif;fill:#042255}
+            .lblS{font:500 11.5px Montserrat,sans-serif;fill:#3b4a68}
+            .lblR{font:700 13px Montserrat,sans-serif;fill:#c80056}
+            .eqT{font:600 13.5px Montserrat,sans-serif;fill:#042255}
+            .eqH{font:800 14px Montserrat,sans-serif;fill:#c80056;letter-spacing:.06em}
+          </style>
+          <!-- casco del anillo -->
+          <circle cx="270" cy="270" r="214" fill="none" stroke="#01336e" stroke-width="18"/>
+          <circle cx="270" cy="270" r="205" fill="none" stroke="#ff97cc" stroke-width="2"/>
+          <!-- rayos -->
+          <g stroke="#9fb3d6" stroke-width="7" stroke-linecap="round">
+            <line x1="270" y1="240" x2="270" y2="66"/><line x1="240" y1="270" x2="66" y2="270"/>
+          </g>
+          <circle cx="270" cy="270" r="30" fill="#042255"/>
+          <circle cx="270" cy="270" r="11" fill="#fff" stroke="#042255" stroke-width="2"/>
+          <circle cx="270" cy="270" r="4" fill="#042255"/>
+          <text x="84" y="196" class="lbl">eje de giro</text>
+          <text x="84" y="212" class="lblS">(perpendicular a la página)</text>
+          <line x1="180" y1="218" x2="246" y2="256" stroke="#042255" stroke-width="1.2"/>
+          <!-- omega -->
+          <path d="M 320 228 A 66 66 0 0 1 320 312" fill="none" stroke="#01336e" stroke-width="3" marker-start="url(#ahNavy)"/>
+          <text x="340" y="276" class="lbl" style="font-size:20px;font-weight:800">ω</text>
+          <!-- radio -->
+          <line x1="270" y1="300" x2="270" y2="474" stroke="#042255" stroke-width="1.6" stroke-dasharray="6 5"/>
+          <text x="248" y="392" class="lbl" style="font-size:18px;font-weight:800">r</text>
+          <!-- persona abajo -->
+          <g stroke="#042255" stroke-width="3" stroke-linecap="round">
+            <line x1="270" y1="474" x2="262" y2="455"/><line x1="270" y1="474" x2="278" y2="455"/>
+            <line x1="270" y1="455" x2="270" y2="428"/><line x1="258" y1="440" x2="282" y2="440"/>
+          </g>
+          <circle cx="270" cy="420" r="8" fill="#ff97cc" stroke="#042255" stroke-width="2.5"/>
+          <!-- a_c abajo -->
+          <line x1="300" y1="462" x2="300" y2="372" stroke="#c80056" stroke-width="4" marker-end="url(#ahRose)"/>
+          <text x="308" y="402" class="lblR">a꜀ = ω²r</text>
+          <text x="308" y="418" class="lblS">hacia el eje</text>
+          <!-- N abajo -->
+          <line x1="240" y1="474" x2="240" y2="420" stroke="#f35d9c" stroke-width="4" marker-end="url(#ahPink)"/>
+          <text x="172" y="426" class="lbl" style="fill:#f35d9c">N = mω²r</text>
+          <text x="172" y="442" class="lblS">piso → pies</text>
+          <!-- peso aparente -->
+          <line x1="232" y1="490" x2="232" y2="532" stroke="#ff97cc" stroke-width="3" stroke-dasharray="5 4" marker-end="url(#ahBaby)"/>
+          <text x="64" y="512" class="lblS">peso aparente percibido</text>
+          <text x="64" y="526" class="lblS">(“abajo” = hacia afuera)</text>
+          <!-- v abajo -->
+          <line x1="276" y1="496" x2="376" y2="496" stroke="#01336e" stroke-width="4" marker-end="url(#ahNavy)"/>
+          <text x="384" y="500" class="lbl">v = ωr (tangente)</text>
+          <!-- persona derecha -->
+          <g stroke="#042255" stroke-width="3" stroke-linecap="round">
+            <line x1="474" y1="270" x2="455" y2="262"/><line x1="474" y1="270" x2="455" y2="278"/>
+            <line x1="455" y1="270" x2="428" y2="270"/><line x1="440" y1="258" x2="440" y2="282"/>
+          </g>
+          <circle cx="420" cy="270" r="8" fill="#ff97cc" stroke="#042255" stroke-width="2.5"/>
+          <line x1="462" y1="238" x2="372" y2="238" stroke="#c80056" stroke-width="4" marker-end="url(#ahRose)"/>
+          <text x="370" y="226" class="lblR">a꜀</text>
+          <line x1="496" y1="270" x2="496" y2="172" stroke="#01336e" stroke-width="4" marker-end="url(#ahNavy)"/>
+          <text x="504" y="204" class="lbl">v ⊥ r</text>
+          <text x="318" y="345" class="lblS">a꜀ apunta siempre al eje</text>
+          <text x="318" y="359" class="lblS">(en todo punto del anillo)</text>
+          <!-- rotulos casco -->
+          <text x="60" y="40" class="lbl">casco / piso exterior</text>
+          <line x1="140" y1="46" x2="160" y2="96" stroke="#042255" stroke-width="1.2"/>
+                    <!-- caja de ecuaciones -->
+          <rect x="548" y="22" width="216" height="496" rx="16" fill="#fff0f7" stroke="#f7cfe2"/>
+          <text x="566" y="52" class="eqH">ECUACIONES</text>
+          <text x="566" y="82" class="eqT">ω = 2π / T = 2πf</text>
+          <text x="566" y="108" class="eqT">v = ω r</text>
+          <text x="566" y="134" class="eqT">a꜀ = ω² r = v² / r</text>
+          <text x="566" y="160" class="eqT">N = m ω² r</text>
+          <text x="566" y="186" class="eqT">g_ap = ω² r</text>
+          <text x="566" y="212" class="eqT">rpm = 60ω / 2π</text>
+          <line x1="566" y1="228" x2="746" y2="228" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="254" class="eqH">CASO: 1 g A 2 rpm</text>
+          <text x="566" y="282" class="eqT">ω = 2·2π/60</text>
+          <text x="566" y="302" class="eqT">   = 0,2094 rad/s</text>
+          <text x="566" y="328" class="eqT">r = g / ω²</text>
+          <text x="566" y="348" class="eqT">   = 9,81 / 0,04386</text>
+          <text x="566" y="370" class="lblR" style="font-size:15px">   = 223,6 m</text>
+          <text x="566" y="396" class="eqT">T = 60/2 = 30 s</text>
+          <text x="566" y="420" class="eqT">v = ωr = 46,8 m/s</text>
+          <line x1="566" y1="436" x2="746" y2="436" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="460" class="eqT">Gradiente (h = 1,8 m):</text>
+          <text x="566" y="482" class="eqT">1 − h/r = 0,992</text>
+          <text x="566" y="504" class="lblS">Diagrama propio · no a escala</text>
+        </svg>
+        <p class="chart-cap">Diagrama elaborado por mí. El anillo gira en sentido antihorario con velocidad angular \(\omega\). Para la persona, “abajo” es hacia afuera del anillo, pero la fuerza real que actúa sobre ella (la normal del piso) apunta hacia el eje.</p>
+      </div>
+
+      <h4>Caso numérico trabajado: ¿qué radio y qué rpm producen 1 g?</h4>
+      <p>Una sola ecuación, \(g = \omega^2 r\), tiene dos incógnitas, así que hace falta un criterio extra: el <b>confort</b>. Los estudios clásicos recomiendan no pasar de unas 2 rpm, y revisiones más recientes (Globus y Hall, 2017) sugieren que hasta 4 rpm podría ser tolerable con adaptación. Tomando el criterio conservador de 2 rpm:</p>
+      <ol>
+        <li>Paso a rad/s: \(\omega = 2\ \tfrac{\text{rev}}{\text{min}} \cdot \tfrac{2\pi\ \text{rad}}{1\ \text{rev}} \cdot \tfrac{1\ \text{min}}{60\ \text{s}} = 0{,}2094\ \text{rad/s}\).</li>
+        <li>Despejo el radio: \(r = \dfrac{g}{\omega^2} = \dfrac{9{,}81}{(0{,}2094)^2} = \dfrac{9{,}81}{0{,}04386} = \mathbf{223{,}6\ m}\).</li>
+        <li>Período y rapidez del piso: \(T = 2\pi/\omega = 30\ \text{s}\); \(v = \omega r = 46{,}8\ \text{m/s}\) (unos 169 km/h).</li>
+        <li>Gradiente: para una persona de 1,8 m, la cabeza siente \(1 - 1{,}8/223{,}6 = 0{,}992\,g\), una diferencia imperceptible.</li>
+        <li>Coriolis al caminar a 1,4 m/s: \(2\omega v = 2(0{,}2094)(1{,}4) = 0{,}59\ \text{m/s}^2 \approx 6\%\,g\).</li>
+      </ol>
+      <div class="table-scroll"><table class="data">
+        <thead><tr><th>rpm</th><th>ω (rad/s)</th><th>Radio para 1 g</th><th>Período T</th><th>Gradiente cabeza/pies (h = 1,8 m)</th></tr></thead>
+        <tbody>
+          <tr><td>1 (Toro de Stanford)</td><td>0,1047</td><td>894,6 m</td><td>60 s</td><td>0,998</td></tr>
+          <tr class="hl"><td>2 (caso trabajado)</td><td>0,2094</td><td>223,6 m</td><td>30 s</td><td>0,992</td></tr>
+          <tr><td>4</td><td>0,4189</td><td>55,9 m</td><td>15 s</td><td>0,968</td></tr>
+          <tr><td>6</td><td>0,6283</td><td>24,9 m</td><td>10 s</td><td>0,928</td></tr>
+          <tr><td>10</td><td>1,0472</td><td>8,9 m</td><td>6 s</td><td>0,799</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="card" style="box-shadow:none;margin-top:14px">
+        <div class="part-label" style="margin-bottom:2px">Calculadora complementaria</div>
+        <p style="font-size:.88rem;margin:0 0 6px">Mueva el radio y el giro para comprobar el caso con otros valores.</p>
+        <div class="controls">
+          <div class="ctrl"><label for="habR"><span>Radio r</span> <output id="habROut"></output></label><input type="range" id="habR" min="5" max="1000" step="0.5" value="223.6"></div>
+          <div class="ctrl"><label for="habRpm"><span>Velocidad de giro</span> <output id="habRpmOut"></output></label><input type="range" id="habRpm" min="0.5" max="12" step="0.05" value="2"></div>
+        </div>
+        <div class="readout" id="habReadout"></div>
+      </div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-2">Tema 2</a>: allá \(g\) era un parámetro de diseño libre; aquí la “gravedad” es la fuerza normal que obliga a la persona a seguir un círculo. Con el <a href="#tema-4">Tema 4</a>: un F1 en curva también necesita una fuerza centrípeta \(m v^2/R\), pero la aporta la fricción de las llantas en vez del piso. En clase: MCU, período, frecuencia y la segunda ley aplicada en dirección radial.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Johnson, R. D., y Holbrow, C. (Eds.). (1977). <i>Space Settlements: A Design Study</i> (NASA SP-413). NASA. Resumen en <a href="https://nss.org/stanford-torus-space-settlement/" target="_blank" rel="noopener">National Space Society</a>.</li>
+      <li>Hall, T. W. <i>SpinCalc: An Artificial-Gravity Calculator</i>. <a href="http://www.artificial-gravity.com/sw/SpinCalc/" target="_blank" rel="noopener">artificial-gravity.com</a></li>
+      <li>Globus, A., y Hall, T. (2017). Space Settlement Population Rotation Tolerance. <i>NSS Space Settlement Journal</i>.</li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 4                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-4">
+  <div class="tema-head">
+    <div class="tema-num">4</div>
+    <div>
+      <div class="eyebrow">Dinámica · fricción</div>
+      <h2>Tema 4 — Llantas de Fórmula 1: la ventana de temperatura y el agarre</h2>
+      <div class="tags"><span class="pill res">Recurso: Visualización de datos</span><span class="pill">μₛ · μₖ · fuerza normal</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>Pirelli, proveedor único de la Fórmula 1, publica para cada compuesto (C1, el más duro, hasta C5, el más blando) un <b>rango de temperatura de trabajo</b>: fuera de él, la llanta pierde agarre. Esa física se programa en el software de simulación. Los equipos la usan en sus simuladores con piloto, y los juegos de carreras la exponen al jugador: la especificación de telemetría UDP de la saga <b>EA Sports F1</b> (Codemasters) transmite en cada paquete las temperaturas de superficie y de carcasa de cada llanta (<code>m_tyresSurfaceTemperature</code>, <code>m_tyresInnerTemperature</code>), porque el modelo de agarre del juego depende de ellas.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>El modelo de Coulomb visto en clase dice que la fricción es proporcional a la normal:</p>
+      <div class="eq">\[ f_s \le \mu_s N \quad(\text{sin deslizar}), \qquad f_k = \mu_k N \quad(\text{deslizando}), \qquad \mu_k < \mu_s \]</div>
+      <p>La goma de una llanta no cumple esa proporcionalidad. El coeficiente <b>baja</b> cuando aumenta la carga vertical \(F_z\) (sensibilidad a la carga), como en el término de agarre máximo del modelo “Magic Formula” de Pacejka:</p>
+      <div class="eq">\[ F_{y,\,máx} = \mu_y(F_z)\,F_z, \qquad \mu_y = p_{Dy1} + p_{Dy2}\,\frac{F_z - F_{z0}}{F_{z0}}, \quad p_{Dy2} < 0 \]</div>
+      <p>Además, \(\mu\) depende de la temperatura \(T\): la adherencia de la goma es viscoelástica y tiene un máximo dentro de la ventana. La diferencia entre \(\mu_s\) y \(\mu_k\) explica por qué una llanta bloqueada o que patina agarra menos que una que rueda justo en su límite.</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué no un valor fijo de agarre?</h4>
+      <p>Con un \(\mu\) fijo, el simulador no podría reproducir lo que decide una carrera: la vuelta de calentamiento, el <i>undercut</i> (una llanta nueva a temperatura gana tiempo), el sobrecalentamiento al seguir a otro auto ni el subviraje por transferencia de carga. La alternativa “no física” de usar tablas precalculadas crece de forma combinatoria (temperatura × carga × deslizamiento × presión × desgaste). Un modelo físico con pocos parámetros cubre todas las combinaciones.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Estrategia y conducción realistas (calentar y cuidar las llantas tiene consecuencias).</li>
+          <li>Explica por qué la transferencia de carga reduce el agarre total del eje.</li>
+          <li>Los ingenieros pueden probar reglajes antes de ir a la pista.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Decenas de parámetros que se identifican con ensayos en banco.</li>
+          <li>Más cálculo por cada paso de física y un comportamiento menos intuitivo para el jugador, por lo que los juegos añaden ayudas.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: visualización de datos</div>
+      <h3>Gráfica 1 · Coeficiente de agarre en función de la temperatura</h3>
+      <div class="resource">
+        <div class="btn-row"><label for="compSel" style="font-weight:600;font-size:.88rem;color:var(--regal-navy)">Resaltar la ventana oficial de:</label>
+          <select id="compSel"><option value="0">C1</option><option value="1">C2</option><option value="2" selected>C3</option><option value="3">C4</option><option value="4">C5</option></select></div>
+        <div class="chart-box tall"><canvas id="t4Temp"></canvas></div>
+        <p class="chart-cap"><b>Datos:</b> los rangos de trabajo (banda sombreada) son los oficiales de Pirelli para 2019: C1 110–140 °C, C2 110–135 °C, C3 105–135 °C, C4 90–120 °C y C5 85–115 °C. La forma de las curvas es <b>calculada por mí</b> con un modelo declarado: \(\mu(T) = \mu_{pico}\cdot 0{,}95^{\left((T-T_c)/w\right)^2}\), donde \(T_c\) es el centro del rango y \(w\) su semiancho, de modo que en los bordes oficiales el agarre cae al 95 % del pico. Los valores de \(\mu_{pico}\) (1,62 a 1,78) son ilustrativos: Pirelli no los publica.</p>
+      </div>
+
+      <h3 style="margin-top:22px">Gráfica 2 · Fuerza lateral máxima en función de la carga vertical</h3>
+      <div class="resource">
+        <div class="controls" style="grid-template-columns:1fr">
+          <div class="ctrl"><label for="ltSlider"><span>Transferencia de carga en una curva, ΔF<sub>z</sub></span> <output id="ltOut"></output></label>
+            <input type="range" id="ltSlider" min="0" max="2800" step="50" value="1500"></div>
+        </div>
+        <div class="chart-box tall"><canvas id="t4Load"></canvas></div>
+        <div class="readout" id="t4Readout"></div>
+        <p class="chart-cap"><b>Datos:</b> calculados por mí con el término de agarre máximo de la Magic Formula (Pacejka y Besselink, 2012), con parámetros ilustrativos \(p_{Dy1} = 1{,}70\), \(p_{Dy2} = -0{,}20\) y \(F_{z0} = 3000\ \text{N}\), y un eje con 6000 N repartidos entre dos llantas. La línea de Coulomb usa \(\mu = 1{,}70\) constante.</p>
+      </div>
+      <div class="note"><strong>Qué observar:</strong> en la curva de Coulomb, duplicar la carga duplica el agarre. En la llanta real no: con 6000 N de carga da unos 9000 N de fuerza lateral, en lugar de los 10 200 N que predice Coulomb. Por eso, cuando en una curva la carga pasa de la llanta interior a la exterior (mueva el control), la exterior gana menos de lo que pierde la interior, y el eje en conjunto agarra menos. Con ΔF<sub>z</sub> = 1500 N, el agarre total baja de 10 200 N a 9900 N (−2,9 %).</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-3">Tema 3</a>: en una curva de radio \(R\), la fricción es la fuerza centrípeta, así que \(v_{máx} = \sqrt{\mu g R}\) (sin carga aerodinámica). Una llanta fría (menor \(\mu\)) obliga a ir más lento. Con el <a href="#tema-5">Tema 5</a>: Coulomb y Hooke son leyes lineales que el software real corrige con modelos no lineales. En clase: fricción estática y cinética, fuerza normal y diagramas de cuerpo libre.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Pirelli (2019). <i>What's new with Pirelli's 2019 Formula 1 tyres?</i> <a href="https://press.pirelli.com/whats-new-with-pirellis-2019-formula-1-tyres/" target="_blank" rel="noopener">press.pirelli.com</a></li>
+      <li>Pacejka, H. B., y Besselink, I. (2012). <i>Tire and Vehicle Dynamics</i> (3.ª ed.). Butterworth-Heinemann.</li>
+      <li>EA Sports / Codemasters. <i>F1® 25 UDP Specification</i>. <a href="https://forums.ea.com/discussions/f1-25-general-discussion-en/discussion-f1%c2%ae-25-udp-specification/12187351" target="_blank" rel="noopener">forums.ea.com</a></li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 5                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-5">
+  <div class="tema-head">
+    <div class="tema-num">5</div>
+    <div>
+      <div class="eyebrow">Ley de Hooke · tercera ley de Newton</div>
+      <h2>Tema 5 — El resorte virtual detrás de un control háptico</h2>
+      <div class="tags"><span class="pill res">Recurso: Multimedia con análisis</span><span class="pill">F = −kx · acción y reacción</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>El control <b>DualSense</b> de PlayStation 5 tiene <b>gatillos adaptativos</b>: un motor conectado al gatillo puede oponerse al dedo. En <b>Returnal</b> (Housemarque, 2021), presionar el gatillo izquierdo hasta la mitad activa la mira; si se empuja más allá de un punto de resistencia, se dispara el modo alternativo. Para programar estos efectos existen API públicas. El framework <b>GameController</b> de Apple expone la clase <code>GCDualSenseAdaptiveTrigger</code> con, entre otros, dos modos: <code>setModeSlopeFeedback(startPosition:endPosition:startStrength:endStrength:)</code>, una resistencia que crece <b>linealmente</b> con la posición del gatillo (un resorte virtual), y <code>setModeWeapon(startPosition:endPosition:resistiveStrength:)</code>, una pared que se “rompe”. Unreal Engine ofrece funciones equivalentes de resistencia de gatillo.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>La ley de Hooke describe una fuerza restauradora proporcional al desplazamiento desde el punto de equilibrio \(x_0\):</p>
+      <div class="eq">\[ F = -k\,(x - x_0), \qquad U = \tfrac12\,k\,(x-x_0)^2 \]</div>
+      <p>Con las posiciones \(p \in [0,1]\) y las intensidades \(s \in [0,1]\) de la API, el modo de pendiente equivale a un resorte de constante</p>
+      <div class="eq">\[ k = F_{máx}\,\frac{s_{fin} - s_{inicio}}{p_{fin} - p_{inicio}} \qquad\text{(en el video: } k = \tfrac{1{,}0 - 0}{1{,}0 - 0{,}2} = 1{,}25\ F_{máx}\text{ por recorrido completo)} \]</div>
+      <p>Y por la tercera ley de Newton, la fuerza del gatillo sobre el dedo es igual y opuesta a la del dedo sobre el gatillo:</p>
+      <div class="eq">\[ \vec F_{gatillo \to dedo} = -\,\vec F_{dedo \to gatillo} \]</div>
+
+      <h4><span class="i">(iii)</span>¿Por qué un modelo físico y no una vibración pregrabada?</h4>
+      <p>La vibración clásica (rumble) es un patrón <b>en el tiempo</b>: suena igual sin importar lo que haga el dedo. Un resorte virtual es una fuerza <b>en función de la posición</b>: si el jugador presiona poco, siente poco; si presiona más, siente más, y al soltar, el gatillo regresa. Eso es lo que hace creer que hay un objeto real (la cuerda de un arco, un freno, un mecanismo) y se ajusta con un solo parámetro, \(k\). Una curva pregrabada por arma no respondería a cambios de juego, como un arco mejorado “más duro”, sin rehacerse a mano.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Retroalimentación coherente con la acción del jugador.</li>
+          <li>Un parámetro de diseño claro (\(k\)) y efectos combinables.</li>
+          <li>Accesibilidad: se puede bajar \(k\) para quien tiene menos fuerza en las manos.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Un resorte real solo devuelve la energía que guardó, pero el motor puede <b>inyectar</b> energía. Si el lazo de control se actualiza con período \(T\), la rigidez estable está limitada (Colgate y Schenkel, 1997: \(b > kT/2\)), por eso las “paredes” virtuales nunca son perfectamente duras.</li>
+          <li>Consumo de batería y desgaste del motor.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: multimedia con análisis</div>
+      <h3>Video: el gatillo con dos efectos, con audio de la señal del actuador</h3>
+      <div class="resource">
+        <div class="video-wrap">
+          <video id="hapticVideo" controls preload="metadata" playsinline poster="media/gatillo-poster.jpg">
+            <source src="media/gatillo-adaptativo.mp4" type="video/mp4">
+            Su navegador no puede reproducir video MP4.
+          </video>
+        </div>
+        <p class="chart-cap">Video elaborado por mí (27 s): animación del modelo de los modos <code>setModeSlopeFeedback</code> y <code>setModeWeapon</code>. A la izquierda, el gatillo con el par de fuerzas de acción y reacción; a la derecha, la curva fuerza–desplazamiento que se traza en vivo. El <b>audio</b> es la señal de mando del actuador: su volumen es proporcional a la fuerza. Fuerza y posición están normalizadas de 0 a 1, como en la API.</p>
+      </div>
+
+      <h4>Análisis escrito por instantes (haga clic en el tiempo para saltar)</h4>
+      <ul class="stamps">
+        <li><button class="stamp-btn" data-t="3">0:03–0:05</button><div><b>Recorrido libre.</b> El gatillo baja de \(p = 0\) a \(p = 0{,}2\) sin resistencia: \(F = 0\) porque aún no se alcanza \(x_0 = 0{,}2\). No hay flechas de fuerza y el audio está en silencio. La ley de Hooke solo actúa con estiramiento positivo, \((x - x_0) > 0\).</div></li>
+        <li><button class="stamp-btn" data-t="5">0:05–0:11</button><div><b>Tensado (resorte virtual).</b> La fuerza crece en línea recta con el desplazamiento: la traza rosada sigue la recta \(F = k(p - 0{,}2)\). Verificación en 0:08: el video marca \(p = 0{,}60\) y \(F/F_{máx} = 0{,}50\), y \(1{,}25 \times (0{,}60 - 0{,}20) = 0{,}50\) ✓. El volumen del zumbido sube a la par, porque el motor debe hacer más fuerza.</div></li>
+        <li class="key"><button class="stamp-btn" data-t="11">0:11–0:13,5</button><div><b>★ Momento clave: aquí se percibe la fuerza restauradora.</b> En 0:11–0:13 el gatillo está al fondo (\(p = 1\)) y la fuerza es máxima, \(F = F_{máx}\). Las dos flechas tienen igual longitud y sentidos opuestos: es la tercera ley (el dedo empuja el gatillo hacia el control y el gatillo empuja el dedo hacia afuera). En 0:13 el dedo se relaja y la fuerza restauradora <b>devuelve el gatillo</b> a \(p = 0\) en medio segundo, con el golpe grave que se escucha. Ese regreso es la firma de un resorte: la fuerza siempre apunta hacia el equilibrio.</div></li>
+        <li><button class="stamp-btn" data-t="16">0:16–0:21</button><div><b>Contraste: modo arma (pared virtual).</b> Libre hasta \(p = 0{,}4\); luego la fuerza sube con una pendiente unas 10 veces mayor (\(k_{pared} = 12\)) y se satura en 0,9. Es un resorte muy rígido con límite, la forma habitual de programar una “pared” háptica.</div></li>
+        <li><button class="stamp-btn" data-t="20.9">0:21</button><div><b>Quiebre.</b> Al llegar a \(p = 0{,}55\), la fuerza cae de golpe de 0,9 a 0 y se escucha un clic. Esto <b>no</b> es Hooke: es una discontinuidad programada que imita el disparo de un mecanismo. Compararlo con 0:05–0:11 muestra la diferencia entre una fuerza elástica (continua, proporcional) y un evento de juego.</div></li>
+      </ul>
+      <div class="note"><strong>Curva fuerza contra desplazamiento que produce el efecto:</strong> es la gráfica de la derecha del video. En el efecto 1, el área bajo la recta entre 0,2 y 1,0, \(U = \tfrac12 k (0{,}8)^2 = 0{,}4\,F_{máx}\) por recorrido completo, es el trabajo que hace el dedo al tensar.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-4">Tema 4</a>: igual que la fricción de Coulomb, Hooke es lineal solo en un rango; aquí se satura (fuerza máxima del motor) y se rompe (modo arma). Con el <a href="#tema-2">Tema 2</a>: tanto el salto como el resorte virtual se calculan en pasos de tiempo, y ese paso limita qué tan rígido puede ser el resorte. Con el <a href="#tema-1">Tema 1</a>: tercera ley de Newton. En clase: ley de Hooke, fuerza elástica y pares de acción y reacción.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Apple Inc. <i>GCDualSenseAdaptiveTrigger</i> y <i>setModeSlopeFeedback(startPosition:endPosition:startStrength:endStrength:)</i>. Apple Developer Documentation. <a href="https://developer.apple.com/documentation/gamecontroller/gcdualsenseadaptivetrigger" target="_blank" rel="noopener">developer.apple.com</a></li>
+      <li>PlayStation Blog (2021, 13 de mayo). <i>How Housemarque created Returnal's immersive DualSense controller effects</i>. <a href="https://blog.playstation.com/2021/05/13/how-housemarque-created-returnals-immersive-dualsense-controller-effects/" target="_blank" rel="noopener">blog.playstation.com</a></li>
+      <li>Colgate, J. E., y Schenkel, G. G. (1997). Passivity of a class of sampled-data systems: application to haptic interfaces. <i>Journal of Robotic Systems, 14</i>(1), 37–47.</li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- PRÓXIMOS AVANCES                                        -->
+<!-- ======================================================= -->
+<section class="block" id="avance-2">
+  <h2 class="section-title">Avance 2 <span class="pill soon" style="color:var(--deep-pink);vertical-align:middle">Próximamente</span></h2>
+  <p class="section-sub">Temas que se desarrollarán en la segunda entrega, con la misma estructura.</p>
+  <div class="grid-2">
+    <div class="future-card"><div class="n">TEMA 6</div><h4>Frenado regenerativo en un vehículo eléctrico</h4></div>
+    <div class="future-card"><div class="n">TEMA 7</div><h4>El coeficiente de restitución en un motor de videojuego</h4></div>
+    <div class="future-card"><div class="n">TEMA 8</div><h4>Ruedas de reacción en satélites</h4></div>
+    <div class="future-card"><div class="n">TEMA 9</div><h4>Asistencia gravitatoria de la Voyager</h4></div>
+  </div>
+</section>
+<section class="block" id="entrega-final">
+  <h2 class="section-title">Entrega final <span class="pill soon" style="color:var(--deep-pink);vertical-align:middle">Próximamente</span></h2>
+  <div class="grid-2">
+    <div class="future-card"><div class="n">TEMA 10</div><h4>Spring animations en interfaces</h4></div>
+    <div class="future-card"><div class="n">TEMA 11</div><h4>Síntesis de sonido y armónicos</h4></div>
+    <div class="future-card"><div class="n">TEMA 12</div><h4>Resonancia estructural y Tacoma Narrows</h4></div>
+    <div class="future-card"><div class="n">TEMA 13</div><h4>Enfriamiento líquido de un centro de datos</h4></div>
+  </div>
+</section>
+
+<!-- ======================================================= -->
+<!-- REFERENCIAS                                             -->
+<!-- ======================================================= -->
+<section class="block" id="referencias">
+  <h2 class="section-title">Referencias</h2>
+  <div class="card">
+    <ol class="refs">
+      <li>Apple Inc. (s. f.). <i>GCDualSenseAdaptiveTrigger</i>. Apple Developer Documentation. https://developer.apple.com/documentation/gamecontroller/gcdualsenseadaptivetrigger</li>
+      <li>Colgate, J. E., y Schenkel, G. G. (1997). Passivity of a class of sampled-data systems: Application to haptic interfaces. <i>Journal of Robotic Systems, 14</i>(1), 37–47.</li>
+      <li>EA Sports / Codemasters. (2025). <i>F1® 25 UDP Specification</i>. EA Forums. https://forums.ea.com/discussions/f1-25-general-discussion-en/discussion-f1%c2%ae-25-udp-specification/12187351</li>
+      <li>Fiedler, G. (2004). <i>Fix your timestep!</i> Gaffer On Games. https://gafferongames.com/post/fix_your_timestep/</li>
+      <li>Flash, T., y Hogan, N. (1985). The coordination of arm movements: An experimentally confirmed mathematical model. <i>Journal of Neuroscience, 5</i>(7), 1688–1703.</li>
+      <li>Globus, A., y Hall, T. (2017). Space settlement population rotation tolerance. <i>NSS Space Settlement Journal</i>.</li>
+      <li>Hall, T. W. (s. f.). <i>SpinCalc: An artificial-gravity calculator</i>. http://www.artificial-gravity.com/sw/SpinCalc/</li>
+      <li>Johnson, R. D., y Holbrow, C. (Eds.). (1977). <i>Space settlements: A design study</i> (NASA SP-413). NASA.</li>
+      <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. En <i>IEEE International Conference on Robotics and Automation</i> (pp. 2520–2525).</li>
+      <li>National Space Society. (s. f.). <i>Stanford Torus Space Settlement</i>. https://nss.org/stanford-torus-space-settlement/</li>
+      <li>Pacejka, H. B., y Besselink, I. (2012). <i>Tire and vehicle dynamics</i> (3.ª ed.). Butterworth-Heinemann.</li>
+      <li>Pirelli. (2019). <i>What's new with Pirelli's 2019 Formula 1 tyres?</i> https://press.pirelli.com/whats-new-with-pirellis-2019-formula-1-tyres/</li>
+      <li>Pittman, K. (2016). <i>Math for game programmers: Building a better jump</i> [Conferencia]. Game Developers Conference. https://gdcvault.com/play/1023148/Math-for-Game-Programmers-Building</li>
+      <li>PlayStation Blog. (2021, 13 de mayo). <i>How Housemarque created Returnal's immersive DualSense controller effects</i>. https://blog.playstation.com/2021/05/13/how-housemarque-created-returnals-immersive-dualsense-controller-effects/</li>
+      <li>PX4 Autopilot. (s. f.). <i>Using PX4's navigation filter (EKF2)</i>. https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html</li>
+      <li>Thorson, M., y Berry, N. (2018). <i>Celeste: Player.cs</i> [Código fuente]. GitHub. https://github.com/NoelFB/Celeste</li>
+    </ol>
+    <p class="chart-cap">Todas las gráficas, la simulación, el diagrama y el video de este portafolio son de elaboración propia. Cuando los datos son calculados, se declara el modelo y sus parámetros junto a cada recurso.</p>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <div class="wrap">
+    Portafolio de evidencias · Física I (FUN-18) · Universidad CENFOTEC · 2026-C3 · Paz Naranjo ·
+    <a href="https://github.com/USUARIO/portafolio-fisica" id="repoLinkFoot">Repositorio público</a>
+  </div>
+</footer>
+</main>
+
+<script src="lib/katex/katex.min.js"></script>
+<script src="lib/katex/contrib/auto-render.min.js"></script>
+<script src="lib/chart.umd.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/tema1.js"></script>
+<script src="js/tema2.js"></script>
+<script src="js/tema3.js"></script>
+<script src="js/tema4.js"></script>
+<script src="js/tema5.js"></script>
+</body>
+</html>
