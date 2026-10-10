@@ -57,7 +57,7 @@
 
   <div class="sidebar-foot">
     Universidad CENFOTEC · 2026-C3<br>
-    <a href="https://github.com/USUARIO/portafolio-fisica" id="repoLinkSide">Repositorio público ↗</a>
+    <a href="https://github.com/marypaznaranjo/Paz_Portafolio_fisica" id="repoLinkSide">Repositorio público ↗</a>
   </div>
 </aside>
 
@@ -69,8 +69,8 @@
     <h1>La física <em>detrás</em> del software</h1>
     <p class="lead">Cinco casos reales donde la cinemática y la dinámica que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el gatillo de un control de videojuego. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
     <div class="meta-grid">
-      <div class="meta"><small>Estudiante</small><span>Paz Naranjo</span></div>
-      <div class="meta"><small>Curso</small><span>FUN-18 · Física I · FCV1</span></div>
+      <div class="meta"><small>Estudiante</small><span>Paz Naranjo Bonilla</span></div>
+      <div class="meta"><small>Curso</small><span>FUN-18 · Física I</span></div>
       <div class="meta"><small>Docente</small><span>Andrés Castro Núñez</span></div>
       <div class="meta"><small>Periodo</small><span>2026-C3 · CENFOTEC</span></div>
     </div>
@@ -86,7 +86,7 @@
     <div class="card"><div class="part-label"><span class="letter">a</span>Caso de uso</div>
       <p style="margin:6px 0 0;font-size:.93rem">(i) El <b>caso concreto</b> con producto, sistema o industria; (ii) el <b>concepto físico</b> como ecuación explícita; (iii) la <b>justificación</b> frente a alternativas no físicas, con lo que se gana y lo que cuesta.</p></div>
     <div class="card"><div class="part-label"><span class="letter">b</span>Recurso de apoyo</div>
-      <p style="margin:6px 0 0;font-size:.93rem">El tipo prescrito para cada tema (visualización, simulación, diagrama o multimedia con análisis), elaborado por mí y con fuentes citadas.</p></div>
+      <p style="margin:6px 0 0;font-size:.93rem">El tipo prescrito para cada tema (visualización, simulación, diagrama o multimedia con análisis), casos elaborados con ayuda de Anthropic. (2026). Claude (versión Opus 5.5)  y con fuentes citadas.</p></div>
     <div class="card"><div class="part-label"><span class="letter">↔</span>Conexiones</div>
       <p style="margin:6px 0 0;font-size:.93rem">Al final de cada tema se señala cómo se relaciona con otros temas del portafolio y con lo visto en clase.</p></div>
   </div>
@@ -134,7 +134,7 @@
       <div class="eq">\[ \vec r(t) = x(t)\,\hat\imath + y(t)\,\hat\jmath, \qquad \vec v = \frac{d\vec r}{dt} = v_x\hat\imath + v_y\hat\jmath, \qquad \vec a = \frac{d\vec v}{dt} = a_x\hat\imath + a_y\hat\jmath \]</div>
       <p>El paso de predicción de un estimador como EKF2 es, en esencia, cinemática con aceleración constante durante un intervalo muy corto \(\Delta t\), aplicada componente por componente:</p>
       <div class="eq">\[ \vec v_{k+1} = \vec v_k + \vec a_k\,\Delta t, \qquad \vec r_{k+1} = \vec r_k + \vec v_k\,\Delta t + \tfrac12\,\vec a_k\,\Delta t^2 \]</div>
-      <p>Para la ruta de la visualización usé un perfil de <b>mínimo tirón</b> (minimum jerk) en cada tramo de longitud \(L\) y duración \(T\), con \(\tau = t/T\):</p>
+       <p>Para la ruta de la visualización se usó un perfil de <b>mínimo tirón</b> (minimum jerk): la trayectoria que minimiza los cambios bruscos de aceleración, que en un dron se traducen en cambios bruscos de empuje de los motores. Mueller, Hehn y D’Andrea (2015) usan este mismo criterio para generar trayectorias de cuadricópteros, resolviendo cada eje por separado. Entre dos puntos en reposo, de longitud \(L\) y duración \(T\), con \(\tau = t/T\), la solución es este polinomio de quinto grado:</p>
       <div class="eq">\[ s(\tau) = L\,(10\tau^3 - 15\tau^4 + 6\tau^5), \qquad v_{máx} = \tfrac{15}{8}\,\frac{L}{T}, \qquad a_{máx} = \tfrac{10\sqrt3}{3}\,\frac{L}{T^2} \]</div>
 
       <h4><span class="i">(iii)</span>¿Por qué modelar la física y no usar valores fijos?</h4>
@@ -182,7 +182,7 @@
             <p class="chart-cap">Aceleración: componentes \(a_x, a_y\) y magnitud \(|\vec a|\).</p></div>
         </div>
         <div class="readout" id="t1Readout"></div>
-        <p class="chart-cap" style="margin-top:12px"><b>Fuente de los datos:</b> datos calculados por mí a partir de la ruta declarada, con el perfil de mínimo tirón de Flash y Hogan (1985), muestreados cada 0,5 s. Se pueden descargar en CSV con el botón de arriba.</p>
+        <p class="chart-cap" style="margin-top:12px"><b>Fuente de los datos:</b> datos calculados por elaboración propia a partir de la ruta declarada, con el perfil de mínimo tirón (Mueller et al., 2015; polinomio publicado originalmente por Flash y Hogan, 1985), muestreados cada 0,5 s. Se pueden descargar en CSV con el botón de arriba.</p>
       </div>
       <div class="note"><strong>Qué observar:</strong> en cada tramo, \(v_x\) y \(v_y\) guardan la misma proporción que \(\Delta x : \Delta y\), porque el dron va en línea recta. La rapidez tiene forma de campana (llega a cero en los puntos de control) y la aceleración cambia de signo a mitad del tramo: primero acelera y luego frena. En el tramo 2 \(v_y = 0\), porque solo hay movimiento hacia el este.</div>
     </div>
@@ -191,6 +191,7 @@
     <div class="sources"><b>Fuentes:</b><ol>
       <li>PX4 Autopilot. <i>Using PX4's Navigation Filter (EKF2)</i>. <a href="https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html" target="_blank" rel="noopener">docs.px4.io</a></li>
       <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. <i>IEEE ICRA</i>, 2520–2525.</li>
+      <li>Mueller, M. W., Hehn, M., y D’Andrea, R. (2015). A computationally efficient motion primitive for quadrocopter trajectory generation. <i>IEEE Transactions on Robotics, 31</i>(6), 1294–1310. <a href="https://hiperlab.berkeley.edu/wp-content/uploads/2018/05/2015_AComputationallyEfficientMotionPrimitiveForQuadrocopterTrajectoryGeneration.pdf" target="_blank" rel="noopener">PDF</a></li>
       <li>Flash, T., y Hogan, N. (1985). The coordination of arm movements: an experimentally confirmed mathematical model. <i>Journal of Neuroscience, 5</i>(7), 1688–1703.</li>
     </ol></div>
   </div>
@@ -412,7 +413,7 @@
           <text x="566" y="482" class="eqT">1 − h/r = 0,992</text>
           <text x="566" y="504" class="lblS">Diagrama propio · no a escala</text>
         </svg>
-        <p class="chart-cap">Diagrama elaborado por mí. El anillo gira en sentido antihorario con velocidad angular \(\omega\). Para la persona, “abajo” es hacia afuera del anillo, pero la fuerza real que actúa sobre ella (la normal del piso) apunta hacia el eje.</p>
+        <p class="chart-cap">Diagrama elaborado por Anthropic. (2026). Claude (versión Opus 5.5). El anillo gira en sentido antihorario con velocidad angular \(\omega\). Para la persona, “abajo” es hacia afuera del anillo, pero la fuerza real que actúa sobre ella (la normal del piso) apunta hacia el eje.</p>
       </div>
 
       <h4>Caso numérico trabajado: ¿qué radio y qué rpm producen 1 g?</h4>
@@ -574,7 +575,7 @@
             Su navegador no puede reproducir video MP4.
           </video>
         </div>
-        <p class="chart-cap">Video elaborado por mí (27 s): animación del modelo de los modos <code>setModeSlopeFeedback</code> y <code>setModeWeapon</code>. A la izquierda, el gatillo con el par de fuerzas de acción y reacción; a la derecha, la curva fuerza–desplazamiento que se traza en vivo. El <b>audio</b> es la señal de mando del actuador: su volumen es proporcional a la fuerza. Fuerza y posición están normalizadas de 0 a 1, como en la API.</p>
+        <p class="chart-cap">Video elaborado por Anthropic. (2026). Claude (versión Opus 5.5): animación del modelo de los modos <code>setModeSlopeFeedback</code> y <code>setModeWeapon</code>. A la izquierda, el gatillo con el par de fuerzas de acción y reacción; a la derecha, la curva fuerza–desplazamiento que se traza en vivo. El <b>audio</b> es la señal de mando del actuador: su volumen es proporcional a la fuerza. Fuerza y posición están normalizadas de 0 a 1, como en la API.</p>
       </div>
 
       <h4>Análisis escrito por instantes (haga clic en el tiempo para saltar)</h4>
