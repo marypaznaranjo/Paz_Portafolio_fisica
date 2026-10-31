@@ -35,10 +35,10 @@
     <li><a class="nav-link" href="#tema-5"><span class="num">5</span>El resorte virtual detrás de un control háptico</a></li>
   </ol>
 
-  <div class="nav-group">Avance 2 <span class="pill soon">Próximamente</span></div>
+  <div class="nav-group">Avance 2 · Energía y momento <span class="pill soon">En curso</span></div>
   <ol>
-    <li><a class="nav-link future" href="#avance-2"><span class="num">6</span>Frenado regenerativo en un vehículo eléctrico</a></li>
-    <li><a class="nav-link future" href="#avance-2"><span class="num">7</span>El coeficiente de restitución en un motor de videojuego</a></li>
+    <li><a class="nav-link" href="#tema-6"><span class="num">6</span>Frenado regenerativo en un vehículo eléctrico</a></li>
+    <li><a class="nav-link" href="#tema-7"><span class="num">7</span>El coeficiente de restitución en un motor de videojuego: por qué la pelota rebota mal</a></li>
     <li><a class="nav-link future" href="#avance-2"><span class="num">8</span>Ruedas de reacción en satélites</a></li>
     <li><a class="nav-link future" href="#avance-2"><span class="num">9</span>Asistencia gravitatoria de la Voyager</a></li>
   </ol>
@@ -66,9 +66,9 @@
 <!-- ================= PORTADA ================= -->
 <header class="hero" id="inicio">
   <div class="wrap">
-    <div class="kicker">Portafolio de evidencias · Avance 1</div>
+    <div class="kicker">Portafolio de evidencias · Avance 2</div>
     <h1>La física <em>detrás</em> del software</h1>
-    <p class="lead">Cinco casos reales donde la cinemática y la dinámica que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el gatillo de un control de videojuego. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
+    <p class="lead">Casos reales donde la cinemática, la dinámica, la energía y el momento que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el frenado de un auto eléctrico y el rebote de una pelota en un motor de juego. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
     <div class="meta-grid">
       <div class="meta"><small>Estudiante</small><span>Paz Naranjo Bonilla</span></div>
       <div class="meta"><small>Curso</small><span>FUN-18 · Física I</span></div>
@@ -95,7 +95,7 @@
 
 <section class="block" id="conexiones">
   <h2 class="section-title">Mapa de conexiones entre temas</h2>
-  <p class="section-sub">Los cinco temas del Avance 1 no son ideas sueltas: comparten ecuaciones y decisiones de diseño.</p>
+  <p class="section-sub">Los temas no son ideas sueltas: comparten ecuaciones y decisiones de diseño.</p>
   <div class="card table-scroll">
     <table class="data">
       <thead><tr><th>Temas</th><th>Idea física compartida</th><th>Qué enseña la comparación</th></tr></thead>
@@ -106,6 +106,11 @@
         <tr><td>4 ↔ 5</td><td>Leyes de fuerza lineales que fallan en los extremos</td><td>Coulomb (\(f=\mu N\)) y Hooke (\(F=-kx\)) son aproximaciones lineales; el software real añade saturación y no linealidad.</td></tr>
         <tr><td>2 ↔ 5</td><td>Integración numérica y paso de tiempo</td><td>Un salto y un resorte virtual se calculan en pasos discretos; ese paso limita la estabilidad y hace que el resultado dependa de la frecuencia de cálculo.</td></tr>
         <tr><td>1 ↔ 5</td><td>Tercera ley de Newton</td><td>Las hélices empujan aire hacia abajo y el aire empuja al dron; el gatillo empuja al dedo con la misma fuerza con que el dedo lo empuja.</td></tr>
+              <tr><td>1 ↔ 6</td><td>Velocidad y aceleración a partir de datos muestreados</td><td>El ciclo de manejo es un \(v(t)\) medido cada segundo; la aceleración sale de \(\Delta v/\Delta t\), como en la ruta del dron.</td></tr>
+        <tr><td>4 ↔ 6</td><td>Fricción que convierte energía cinética en calor</td><td>Las pastillas de freno disipan \(K\) por fricción cinética, y toda frenada está limitada por el agarre \(\mu N\) de las llantas.</td></tr>
+        <tr><td>6 ↔ 7</td><td>Qué fracción de la energía cinética sobrevive</td><td>En la frenada, \(E_{rec}/|\Delta K|\); en el choque, \(K'/K = e^2\). En ambos casos, lo que falta se transforma en calor o deformación.</td></tr>
+        <tr><td>2 ↔ 7</td><td>Parámetros físicos como decisiones de diseño</td><td>Entre botes la pelota cae como el personaje que salta; en un caso se ajusta \(g\), en el otro \(e\), y ambos pueden configurarse “irreales”.</td></tr>
+        <tr><td>5 ↔ 7</td><td>Límites del cálculo en pasos discretos</td><td>El resorte háptico necesita amortiguamiento para ser estable; el rebote necesita un umbral porque el modelo ideal da infinitos botes en tiempo finito.</td></tr>
       </tbody>
     </table>
   </div>
@@ -600,14 +605,175 @@
 </article>
 
 <!-- ======================================================= -->
+<!-- TEMA 6                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-6">
+  <div class="tema-head">
+    <div class="tema-num">6</div>
+    <div>
+      <div class="eyebrow">Trabajo y energía</div>
+      <h2>Tema 6 — Frenado regenerativo en un vehículo eléctrico</h2>
+      <div class="tags"><span class="pill res">Recurso: Visualización de datos</span><span class="pill">Teorema trabajo-energía · K = ½mv² · P = Fv</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>El <b>Nissan Leaf</b> incorporó en 2017 el <b>e-Pedal</b>: al soltar el acelerador, el auto desacelera hasta 0,2 g, como si se pisara el freno, y puede detenerse por completo sin tocar el pedal de freno. Detrás hay software que decide, en cada instante, cuánta de la frenada pide al <b>motor funcionando como generador</b> (que devuelve energía a la batería) y cuánta a los <b>frenos de fricción</b> (que la convierten en calor). Nissan indica que al soltar el pedal actúan ambos frenos, el regenerativo y el de fricción.</p>
+      <p>Antes de construir el auto, esa decisión se evalúa en simuladores. <b>FASTSim</b>, el simulador de vehículos de código abierto del laboratorio NREL (Departamento de Energía de EE. UU.), recorre segundo a segundo los <b>ciclos de manejo oficiales de la EPA</b>, que son los mismos perfiles de velocidad con que se homologa el consumo en dinamómetro. Su modelo limita la regeneración por la potencia del motor y de la batería y usa más freno de fricción a baja velocidad (Brooker et al., 2015). Con un modelo del Leaf en el software AVL Cruise, Szumska y Jurecki (2022) estimaron que en ciudad la energía recuperada puede llegar al 20 % de la energía del viaje, frente a cerca del 2 % en vía rápida.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>El teorema trabajo-energía visto en clase dice que el trabajo neto sobre el auto es igual al cambio de su energía cinética. Al frenar, \(\Delta K < 0\): esa energía tiene que ir a alguna parte.</p>
+      <div class="eq">\[ W_{neto} = \Delta K = \tfrac12 m v_f^2 - \tfrac12 m v_i^2, \qquad P = \frac{dW}{dt} = F\,v \]</div>
+      <p>La fuerza que deben dar las ruedas en cada instante (carga de camino) suma la inercia, la resistencia a la rodadura y el arrastre del aire:</p>
+      <div class="eq">\[ F_{rueda} = m\,a + m g\,C_{rr} + \tfrac12 \rho\, C_d A\, v^2, \qquad P_{rueda} = F_{rueda}\, v \]</div>
+      <p>Si \(P_{rueda} &lt; 0\), el auto está frenando. Por conservación de la energía, la energía cinética liberada se reparte en cuatro destinos:</p>
+      <div class="eq">\[ |\Delta K_{frenado}| = \underbrace{W_{rodadura+aire}}_{\text{inevitable}} + \underbrace{E_{rec}}_{\text{a la batería}} + \underbrace{E_{pérd}}_{\text{motor/inversor}} + \underbrace{Q_{fricción}}_{\text{calor en frenos}} \]</div>
+      <div class="eq">\[ E_{rec} = \eta_r \int \min\!\big(P_{freno}\, f(v),\ P_{máx}\big)\, dt, \qquad f(v) = \min\!\left(1, \tfrac{v}{v_{corte}}\right) \]</div>
+      <p>Por ejemplo, un auto de 1700 kg a 91 km/h (25,3 m/s) lleva \(K = \tfrac12 (1700)(25{,}3)^2 \approx 545\ \text{kJ} \approx 151\ \text{Wh}\). Detenerlo con frenos de fricción convierte toda esa energía en calor.</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué no un porcentaje fijo de recuperación?</h4>
+      <p>La alternativa no física sería suponer “la regeneración devuelve un X % de la energía” o usar curvas de consumo precalculadas. El problema es que la cantidad recuperable depende de <b>cuándo y cuánto</b> se frena: en el modelo de abajo, el mismo auto recupera el 57 % de la energía cinética de sus frenadas en el ciclo urbano, pero solo el 33 % en carretera, donde casi toda la energía se va en vencer al aire. Además, el control necesita la <b>potencia instantánea</b> para no exceder lo que admiten el motor y la batería; un promedio no le sirve. Modelar \(F\,v\) segundo a segundo permite estimar la autonomía en cualquier recorrido, dimensionar el motor y calibrar la mezcla entre freno eléctrico y de fricción.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Autonomía estimada para cualquier perfil de manejo, no solo para uno promedio.</li>
+          <li>Saber qué limita la recuperación (potencia del motor, velocidad, eficiencia) y dónde invertir en ingeniería.</li>
+          <li>El controlador puede repartir la frenada sin sobrecargar la batería.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Parámetros que hay que medir: \(C_{rr}\), \(C_d A\), mapas de eficiencia del motor y de la batería.</li>
+          <li>Un modelo simple omite el aire acondicionado, la pendiente, la temperatura de la batería y su estado de carga; hay que validarlo en dinamómetro.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: visualización de datos</div>
+      <h3>Balance de energía a lo largo de un ciclo de manejo oficial</h3>
+      <p>Las tres gráficas usan los perfiles de velocidad <b>reales</b> de dos ciclos de la EPA: el urbano UDDS (1369 s, 12,0 km, con 17 detenciones) y el de carretera HWFET (765 s, 16,5 km). A cada segundo se calcula la potencia con las ecuaciones de arriba. Mueva los controles: todo se recalcula.</p>
+      <div class="resource">
+        <div class="btn-row"><label for="t6Cycle" style="font-weight:600;font-size:.88rem;color:var(--regal-navy)">Ciclo de manejo:</label>
+          <select id="t6Cycle"><option value="udds" selected>UDDS · ciudad (EPA)</option><option value="hwfet">HWFET · carretera (EPA)</option></select></div>
+        <div class="controls">
+          <div class="ctrl"><label for="t6Mass"><span>Masa del vehículo, m</span> <output id="t6MassOut"></output></label><input type="range" id="t6Mass" min="1200" max="2600" step="50" value="1700"></div>
+          <div class="ctrl"><label for="t6Eta"><span>Eficiencia de regeneración, η<sub>r</sub></span> <output id="t6EtaOut"></output></label><input type="range" id="t6Eta" min="0.5" max="0.95" step="0.01" value="0.8"></div>
+          <div class="ctrl"><label for="t6Pmax"><span>Potencia máxima de regeneración, P<sub>máx</sub></span> <output id="t6PmaxOut"></output></label><input type="range" id="t6Pmax" min="0" max="60" step="1" value="50"></div>
+        </div>
+
+        <h3 style="font-size:1.02rem;margin:14px 0 6px">Gráfica 1 · Flujo de potencia segundo a segundo</h3>
+        <div class="chart-box tall"><canvas id="t6Power"></canvas></div>
+        <p class="chart-cap">Arriba del cero, la batería entrega energía a las ruedas; abajo, la frenada: en rosado lo que vuelve a la batería y en rosewood lo que se pierde en los frenos de fricción. La línea punteada es la velocidad del ciclo.</p>
+
+        <h3 style="font-size:1.02rem;margin:18px 0 6px">Gráfica 2 · Energía acumulada durante el ciclo</h3>
+        <div class="chart-box tall"><canvas id="t6Energy"></canvas></div>
+
+        <h3 style="font-size:1.02rem;margin:18px 0 6px">Gráfica 3 · ¿A dónde va la energía cinética de las frenadas?</h3>
+        <div class="chart-box mid" style="height:200px"><canvas id="t6Balance"></canvas></div>
+        <div class="readout" id="t6Readout"></div>
+        <p class="chart-cap"><b>Fuente de los datos:</b> perfiles de velocidad UDDS y HWFET de la U.S. EPA (<i>Dynamometer Drive Schedules</i>, 40 CFR Parte 86, Apéndice I), en la versión en m/s que distribuye NREL con FASTSim (licencia Apache 2.0); copia en <code>data/udds.csv</code> y <code>data/hwfet.csv</code> del repositorio. <b>Modelo declarado:</b> carga de camino con \(C_{rr} = 0{,}009\), \(C_d A = 0{,}65\ \text{m}^2\), \(\rho = 1{,}2\ \text{kg/m}^3\), terreno plano, eficiencia de tracción 90 %, \(v_{corte} = 4\ \text{m/s}\) y \(\Delta t = 1\ \text{s}\); sin aire acondicionado ni otros consumos auxiliares. Los parámetros son <b>ilustrativos</b>, del orden de un compacto eléctrico; no corresponden a un modelo comercial. Gráficas elaboradas con Claude Opus 5.5 (Anthropic, 2026); parámetros y verificación de la autora.</p>
+      </div>
+      <div class="note"><strong>Qué observar:</strong> en el ciclo urbano, de los 991 Wh de energía cinética que se liberan al desacelerar, el 26 % se gasta en vencer la rodadura y el aire, el 57 % vuelve a la batería, el 14 % se pierde en el motor y el inversor y solo el 2 % termina en los frenos de fricción (casi todo en los últimos metros antes de detenerse). Eso baja el consumo de 140 a 93 Wh/km (−34 %). En carretera el auto casi no frena: el 59 % de esa energía se la lleva el aire y el ahorro cae al 9 %. <strong>Pruebe:</strong> ponga P<sub>máx</sub> en 0 para ver un auto sin regeneración (todo se va a los frenos) o bájela a 10 kW para ver cómo los picos de frenada se “recortan” y el exceso pasa a la fricción.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-1">Tema 1</a>: el ciclo es un \(v(t)\) muestreado, y la aceleración se obtiene como \(a = \Delta v/\Delta t\), igual que en la ruta del dron. Con el <a href="#tema-4">Tema 4</a>: el freno de fricción es la fricción cinética de las pastillas convirtiendo \(K\) en calor, y la frenada (eléctrica o no) está limitada por el agarre de las llantas, \(\mu N\). Con el <a href="#tema-7">Tema 7</a>: en ambos temas la pregunta es qué fracción de la energía cinética sobrevive; aquí la mide \(E_{rec}/|\Delta K|\), allá \(e^2\). En clase: trabajo de una fuerza, teorema trabajo-energía, potencia \(P = Fv\) y conservación de la energía con fuerzas no conservativas.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>U.S. Environmental Protection Agency. (s. f.). <i>Dynamometer drive schedules</i>. <a href="https://www.epa.gov/vehicle-and-fuel-emissions-testing/dynamometer-drive-schedules" target="_blank" rel="noopener">epa.gov</a></li>
+      <li>Brooker, A., Gonder, J., Wang, L., Wood, E., Lopp, S., y Ramroth, L. (2015). <i>FASTSim: A model to estimate vehicle efficiency, cost and performance</i> (SAE Technical Paper 2015-01-0973). <a href="https://www.nrel.gov/docs/fy15osti/63623.pdf" target="_blank" rel="noopener">nrel.gov</a> · Ciclos: <a href="https://github.com/NREL/fastsim" target="_blank" rel="noopener">github.com/NREL/fastsim</a></li>
+      <li>Nissan Motor Co. (2017, 6 de diciembre). <i>e-Pedal: Easy driving using only the accelerator pedal</i>. <a href="https://global.nissannews.com/en/releases/e-pedal-easy-driving-using-only-the-accelerator-pedal" target="_blank" rel="noopener">global.nissannews.com</a></li>
+      <li>Szumska, E. M., y Jurecki, R. (2022). The analysis of energy recovered during the braking of an electric vehicle in different driving conditions. <i>Energies, 15</i>(24), 9369. <a href="https://doi.org/10.3390/en15249369" target="_blank" rel="noopener">doi.org/10.3390/en15249369</a></li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 7                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-7">
+  <div class="tema-head">
+    <div class="tema-num">7</div>
+    <div>
+      <div class="eyebrow">Momento lineal y colisiones</div>
+      <h2>Tema 7 — El coeficiente de restitución en un motor de videojuego: por qué la pelota rebota mal</h2>
+      <div class="tags"><span class="pill res">Recurso: Simulación interactiva</span><span class="pill">Conservación de p · choques elásticos e inelásticos · e</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>En <b>Unity</b>, el rebote de un objeto se configura con un <code>PhysicsMaterial</code>: su propiedad <code>bounciness</code> es el coeficiente de restitución. Como en cada choque participan <b>dos</b> materiales (la pelota y el suelo), el motor los combina en un solo valor según <code>bounceCombine</code>: <b>Promedio</b>, <b>Mínimo</b>, <b>Multiplicar</b> o <b>Máximo</b>. Si los dos materiales piden modos distintos, gana el de mayor prioridad (Promedio &lt; Mínimo &lt; Multiplicar &lt; Máximo). Además, <code>Physics.bounceThreshold</code> (2 m/s por defecto) indica que los choques más lentos que ese valor <b>no rebotan</b>. El motor 2D <b>Box2D</b> tiene los mismos dos parámetros: <code>restitution</code> y <code>restitutionThreshold</code>.</p>
+      <p>De ahí salen las quejas típicas de “la pelota rebota mal”: el desarrollador pone a la pelota un rebote realista, pero el suelo tiene rebote 0 y el modo Promedio <b>reduce el coeficiente a la mitad</b>; o la pelota “se pega” al piso cuando todavía debería dar varios botes, por el umbral. Para calibrarla con un dato real, sirve la norma de la <b>Federación Internacional de Tenis (ITF)</b>: una pelota soltada desde 254 cm sobre una superficie rígida debe rebotar entre 135 y 147 cm.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>En un choque, las fuerzas internas son mucho mayores que las externas durante el contacto, así que se conserva el momento lineal. El coeficiente de restitución \(e\) mide qué fracción de la velocidad relativa se recupera al separarse:</p>
+      <div class="eq">\[ m_1 v_1 + m_2 v_2 = m_1 v_1' + m_2 v_2', \qquad e = -\,\frac{v_1' - v_2'}{v_1 - v_2} \]</div>
+      <div class="eq">\[ v_1' = \frac{(m_1 - e\,m_2)\,v_1 + (1+e)\,m_2 v_2}{m_1 + m_2} \]</div>
+      <p>Con \(e = 1\), el choque es <b>elástico</b> (se conserva la energía cinética); con \(0 &lt; e &lt; 1\), <b>inelástico</b>; con \(e = 0\), <b>perfectamente inelástico</b> (los cuerpos quedan juntos). Para la pelota contra el suelo, \(m_2 \to \infty\) y \(v_2 = 0\):</p>
+      <div class="eq">\[ v' = -e\,v, \qquad h_{n} = e^{2n} h_0, \qquad \frac{K'}{K} = e^2, \qquad J = m(1+e)\,v \]</div>
+      <p>Con los datos de la ITF: \(e = \sqrt{h_1/h_0} = \sqrt{135/254} \approx 0{,}73\) a \(\sqrt{147/254} \approx 0{,}76\). Como cada vuelo dura \(e\) veces el anterior, la suma de todos los tiempos es una serie geométrica finita:</p>
+      <div class="eq">\[ t_{total} = t_0\,\frac{1+e}{1-e}, \qquad t_0 = \sqrt{2h_0/g} \]</div>
+      <p>Es decir, el modelo ideal predice <b>infinitos rebotes en un tiempo finito</b>. Un motor que calcula en pasos de 1/50 s no puede resolverlos; por eso existe el umbral de rebote.</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué no una animación de rebote?</h4>
+      <p>Un rebote guionizado (una curva de “bote” dibujada a mano que se reproduce al tocar el suelo) se ve bien en una sola situación, pero no sabe qué hacer si la pelota cae desde otra altura, choca contra otra pelota en movimiento o golpea una pared inclinada. Con \(e\) y la conservación del momento, el motor resuelve <b>cualquier</b> choque, y los rebotes sucesivos cumplen \(h_{n+1} = e^2 h_n\), que es lo que el ojo reconoce como “natural”. El costo es que \(e\) pasa a ser un parámetro de diseño que se puede configurar mal: los valores combinados, el umbral y \(e &gt; 1\) producen rebotes que ningún objeto real haría.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Rebotes coherentes con cualquier altura, velocidad y ángulo, sin animar cada caso.</li>
+          <li>Un solo número por material, calibrable con un ensayo real (como el de la ITF).</li>
+          <li>Choques entre objetos en movimiento que conservan el momento.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Hay que entender cómo el motor combina los materiales; el valor puesto en la pelota no es el que se usa.</li>
+          <li>Hacen falta reglas que no son física (umbral de rebote) para evitar la vibración infinita en el suelo.</li>
+          <li>En pasos discretos, corregir la penetración entre objetos puede añadir energía que no existía.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: simulación interactiva</div>
+      <h3>Laboratorio de rebote: pelota real frente al motor de juego</h3>
+      <p>Las dos pelotas se sueltan desde 2,54 m, la altura de la prueba de la ITF. La de la izquierda usa el \(e\) medido de una pelota de tenis real; la de la derecha, el \(e\) <b>efectivo</b> que resulta de su configuración de motor. Cambie los controles: los rebotes, la gráfica y las lecturas se recalculan con \(v' = -e\,v\). “Soltar” reproduce la caída en tiempo real.</p>
+      <div class="resource">
+        <canvas id="bounceCanvas" aria-label="Simulación de dos pelotas que rebotan: una real y otra con la configuración del motor"></canvas>
+        <div class="controls">
+          <div class="ctrl"><label for="eBall"><span>Rebote de la pelota, e<sub>pelota</sub></span> <output id="eBallOut"></output></label><input type="range" id="eBall" min="0" max="1.2" step="0.005" value="0.745"></div>
+          <div class="ctrl"><label for="eFloor"><span>Rebote del suelo, e<sub>suelo</sub></span> <output id="eFloorOut"></output></label><input type="range" id="eFloor" min="0" max="1.2" step="0.005" value="0.745"></div>
+          <div class="ctrl"><label for="eMode"><span>Modo de combinación</span></label>
+            <select id="eMode" style="width:100%;margin-top:4px"><option value="avg" selected>Promedio: (a + b)/2</option><option value="min">Mínimo: min(a, b)</option><option value="mul">Multiplicar: a · b</option><option value="max">Máximo: max(a, b)</option></select></div>
+          <div class="ctrl"><label for="eThresh"><span>Umbral de rebote, v<sub>umbral</sub></span> <output id="eThreshOut"></output></label><input type="range" id="eThresh" min="0" max="4" step="0.1" value="0.1"></div>
+        </div>
+        <div class="btn-row">
+          <button class="btn" id="bounceBtn">▶ Soltar</button>
+          <span style="font-size:.8rem;color:var(--ink-soft);margin-left:6px">Casos:</span>
+          <button class="btn ghost" data-bpreset="itf">Calibrada (ITF)</button>
+          <button class="btn ghost" data-bpreset="avg0">Suelo en 0 + Promedio</button>
+          <button class="btn ghost" data-bpreset="mul0">Suelo en 0 + Multiplicar</button>
+          <button class="btn ghost" data-bpreset="thr">Umbral de 2 m/s</button>
+          <button class="btn ghost" data-bpreset="elast">Elástico (e = 1)</button>
+          <button class="btn ghost" data-bpreset="gain">e = 1,1</button>
+        </div>
+        <div class="chart-box mid"><canvas id="bounceChart"></canvas></div>
+        <div class="readout" id="bounceReadout"></div>
+        <p class="chart-cap"><b>Datos y modelo:</b> altura de caída de 254 cm y rebote medio de 141 cm (pelotas tipo 2: 135–147 cm) según la ITF (2023), de donde \(e = \sqrt{141/254} \approx 0{,}745\); masa de 57 g, dentro del rango oficial de 56,0–59,4 g. Los modos de combinación y el umbral reproducen los de Unity (<code>bounceCombine</code>, <code>Physics.bounceThreshold</code>). Entre choques, la pelota sigue un MRUA exacto con \(g = 9{,}81\ \text{m/s}^2\), sin resistencia del aire ni giro; para la pelota real se detiene el cálculo cuando la rapidez de impacto baja de 0,05 m/s. Simulación elaborada con Claude Opus 5.5 (Anthropic, 2026); parámetros y verificación de la autora.</p>
+      </div>
+      <div class="note"><strong>Pruebe:</strong> con “Suelo en 0 + Promedio”, la pelota usa \(e = 0{,}37\) y sube solo 0,35 m en lugar de 1,41 m: pierde el 86 % de su energía en cada bote en vez del 44 %. Con “Umbral de 2 m/s” (el valor por defecto de Unity), los cinco primeros botes son idénticos a los reales, pero en el sexto impacto la pelota llega a 1,6 m/s y se queda pegada al suelo, mientras la real sigue rebotando. Con \(e = 1\) nunca se detiene, y con \(e = 1{,}1\) cada bote es más alto que el anterior: el motor está creando energía.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-2">Tema 2</a>: entre bote y bote la pelota hace la misma caída libre del salto, con \(t = \sqrt{2h/g}\), y en ambos casos un parámetro físico se vuelve una decisión de diseño. Con el <a href="#tema-6">Tema 6</a>: \(1 - e^2\) es la fracción de energía cinética que se pierde por choque, igual que en una frenada hay energía que no se recupera. Con el <a href="#tema-5">Tema 5</a>: el umbral de rebote y la estabilidad del resorte háptico son consecuencias de calcular en pasos discretos. En clase: momento lineal, impulso \(J = \Delta p\), conservación del momento, choques elásticos, inelásticos y perfectamente inelásticos.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Unity Technologies. (s. f.). <i>PhysicsMaterialCombine</i>. Unity Scripting API. <a href="https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/physicsmaterialcombine.md" target="_blank" rel="noopener">docs.unity.com</a></li>
+      <li>Unity Technologies. (s. f.). <i>Physics.bounceThreshold</i>. Unity Scripting API. <a href="https://docs.unity3d.com/ScriptReference/Physics-bounceThreshold.html" target="_blank" rel="noopener">docs.unity3d.com</a></li>
+      <li>Catto, E. (s. f.). <i>b2FixtureDef struct reference</i> (campos <code>restitution</code> y <code>restitutionThreshold</code>). Box2D 2.4.1 Documentation. <a href="https://box2d.org/documentation/structb2_fixture_def.html" target="_blank" rel="noopener">box2d.org</a></li>
+      <li>International Tennis Federation. (2023). <i>ITF approved tennis balls, classified surfaces &amp; recognised courts: A guide to products and test methods</i>. <a href="https://www.itftennis.com/media/4420/2023-technical-booklet.pdf" target="_blank" rel="noopener">itftennis.com</a></li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
 <!-- PRÓXIMOS AVANCES                                        -->
 <!-- ======================================================= -->
 <section class="block" id="avance-2">
   <h2 class="section-title">Avance 2 <span class="pill soon" style="color:var(--deep-pink);vertical-align:middle">Próximamente</span></h2>
-  <p class="section-sub">Temas que se desarrollarán en la segunda entrega, con la misma estructura.</p>
+  <p class="section-sub">Temas restantes de la segunda entrega, que seguirán la misma estructura.</p>
   <div class="grid-2">
-    <div class="future-card"><div class="n">TEMA 6</div><h4>Frenado regenerativo en un vehículo eléctrico</h4></div>
-    <div class="future-card"><div class="n">TEMA 7</div><h4>El coeficiente de restitución en un motor de videojuego</h4></div>
     <div class="future-card"><div class="n">TEMA 8</div><h4>Ruedas de reacción en satélites</h4></div>
     <div class="future-card"><div class="n">TEMA 9</div><h4>Asistencia gravitatoria de la Voyager</h4></div>
   </div>
@@ -628,7 +794,7 @@
 <section class="block" id="uso-ia">
   <h2 class="section-title">Uso de inteligencia artificial</h2>
   <div class="card">
-    <p>Para la creación de las imágenes y figuras de este portafolio se utilizó Claude, versión Opus 5.5 (Anthropic, 2026): las gráficas de los temas 1 y 4, el diagrama del tema 3 y el video del tema 5. El modelo, los parámetros y las fuentes de cada figura se declaran en su pie.</p>
+    <p>Para la creación de las imágenes y figuras de este portafolio se utilizó Claude, versión Opus 5.5 (Anthropic, 2026): las gráficas de los temas 1, 4 y 6, el diagrama del tema 3, el video del tema 5 y las simulaciones de los temas 2 y 7. El modelo, los parámetros y las fuentes de cada figura se declaran en su pie.</p>
   </div>
 </section>
 
@@ -641,22 +807,31 @@
     <ol class="refs">
       <li>Anthropic. (2026). <i>Claude</i> (versión Opus 5.5) [Modelo de lenguaje grande]. https://claude.ai</li>
       <li>Apple Inc. (s. f.). <i>GCDualSenseAdaptiveTrigger</i>. Apple Developer Documentation. https://developer.apple.com/documentation/gamecontroller/gcdualsenseadaptivetrigger</li>
+      <li>Brooker, A., Gonder, J., Wang, L., Wood, E., Lopp, S., y Ramroth, L. (2015). <i>FASTSim: A model to estimate vehicle efficiency, cost and performance</i> (SAE Technical Paper 2015-01-0973). National Renewable Energy Laboratory. https://www.nrel.gov/docs/fy15osti/63623.pdf</li>
+      <li>Catto, E. (s. f.). <i>b2FixtureDef struct reference</i>. Box2D 2.4.1 Documentation. https://box2d.org/documentation/structb2_fixture_def.html</li>
       <li>Colgate, J. E., y Schenkel, G. G. (1997). Passivity of a class of sampled-data systems: Application to haptic interfaces. <i>Journal of Robotic Systems, 14</i>(1), 37–47.</li>
       <li>EA Sports / Codemasters. (2025). <i>F1® 25 UDP Specification</i>. EA Forums. https://forums.ea.com/discussions/f1-25-general-discussion-en/discussion-f1%c2%ae-25-udp-specification/12187351</li>
       <li>Fiedler, G. (2004). <i>Fix your timestep!</i> Gaffer On Games. https://gafferongames.com/post/fix_your_timestep/</li>
       <li>Flash, T., y Hogan, N. (1985). The coordination of arm movements: An experimentally confirmed mathematical model. <i>Journal of Neuroscience, 5</i>(7), 1688–1703.</li>
       <li>Globus, A., y Hall, T. (2017). Space settlement population rotation tolerance. <i>NSS Space Settlement Journal</i>.</li>
       <li>Hall, T. W. (s. f.). <i>SpinCalc: An artificial-gravity calculator</i>. http://www.artificial-gravity.com/sw/SpinCalc/</li>
+      <li>International Tennis Federation. (2023). <i>ITF approved tennis balls, classified surfaces &amp; recognised courts 2023: A guide to products and test methods</i>. https://www.itftennis.com/media/4420/2023-technical-booklet.pdf</li>
       <li>Johnson, R. D., y Holbrow, C. (Eds.). (1977). <i>Space settlements: A design study</i> (NASA SP-413). NASA.</li>
       <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. En <i>IEEE International Conference on Robotics and Automation</i> (pp. 2520–2525).</li>
       <li>Mueller, M. W., Hehn, M., y D’Andrea, R. (2015). A computationally efficient motion primitive for quadrocopter trajectory generation. <i>IEEE Transactions on Robotics, 31</i>(6), 1294–1310.</li>
+      <li>National Renewable Energy Laboratory. (s. f.). <i>FASTSim: Future Automotive Systems Technology Simulator</i> [Software y ciclos de manejo]. GitHub. https://github.com/NREL/fastsim</li>
       <li>National Space Society. (s. f.). <i>Stanford Torus Space Settlement</i>. https://nss.org/stanford-torus-space-settlement/</li>
+      <li>Nissan Motor Co. (2017, 6 de diciembre). <i>e-Pedal: Easy driving using only the accelerator pedal</i>. https://global.nissannews.com/en/releases/e-pedal-easy-driving-using-only-the-accelerator-pedal</li>
       <li>Pacejka, H. B., y Besselink, I. (2012). <i>Tire and vehicle dynamics</i> (3.ª ed.). Butterworth-Heinemann.</li>
       <li>Pirelli. (2019). <i>What's new with Pirelli's 2019 Formula 1 tyres?</i> https://press.pirelli.com/whats-new-with-pirellis-2019-formula-1-tyres/</li>
       <li>Pittman, K. (2016). <i>Math for game programmers: Building a better jump</i> [Conferencia]. Game Developers Conference. https://gdcvault.com/play/1023148/Math-for-Game-Programmers-Building</li>
       <li>PlayStation Blog. (2021, 13 de mayo). <i>How Housemarque created Returnal's immersive DualSense controller effects</i>. https://blog.playstation.com/2021/05/13/how-housemarque-created-returnals-immersive-dualsense-controller-effects/</li>
       <li>PX4 Autopilot. (s. f.). <i>Using PX4's navigation filter (EKF2)</i>. https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html</li>
+      <li>Szumska, E. M., y Jurecki, R. (2022). The analysis of energy recovered during the braking of an electric vehicle in different driving conditions. <i>Energies, 15</i>(24), 9369. https://doi.org/10.3390/en15249369</li>
       <li>Thorson, M., y Berry, N. (2018). <i>Celeste: Player.cs</i> [Código fuente]. GitHub. https://github.com/NoelFB/Celeste</li>
+      <li>Unity Technologies. (s. f.-a). <i>Physics.bounceThreshold</i>. Unity Scripting API. https://docs.unity3d.com/ScriptReference/Physics-bounceThreshold.html</li>
+      <li>Unity Technologies. (s. f.-b). <i>PhysicsMaterialCombine</i>. Unity Scripting API. https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/physicsmaterialcombine.md</li>
+      <li>U.S. Environmental Protection Agency. (s. f.). <i>Dynamometer drive schedules</i>. https://www.epa.gov/vehicle-and-fuel-emissions-testing/dynamometer-drive-schedules</li>
     </ol>
     <p class="chart-cap">Cuando los datos son calculados, se declara el modelo y sus parámetros junto a cada recurso. El uso de inteligencia artificial se describe en la sección <a href="#uso-ia">Uso de inteligencia artificial</a>.</p>
   </div>
@@ -681,5 +856,8 @@
 <script src="js/tema3.js"></script>
 <script src="js/tema4.js"></script>
 <script src="js/tema5.js"></script>
+<script src="js/tema6-datos.js"></script>
+<script src="js/tema6.js"></script>
+<script src="js/tema7.js"></script>
 </body>
 </html>

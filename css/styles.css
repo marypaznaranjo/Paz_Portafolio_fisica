@@ -175,7 +175,7 @@ table.data td { padding: 7px 10px; border-bottom: 1px solid var(--line); }
 table.data tr.hl td { background: var(--pink-tint); font-weight: 700; color: var(--rosewood); }
 .table-scroll { overflow-x: auto; }
 
-#jumpCanvas { width: 100%; height: 380px; display: block; background: linear-gradient(#f2f6ff, #fff); border-radius: 12px; border: 1px solid #dfe6f3; }
+#jumpCanvas, #bounceCanvas { width: 100%; height: 380px; display: block; background: linear-gradient(#f2f6ff, #fff); border-radius: 12px; border: 1px solid #dfe6f3; }
 
 .diagram-svg { width: 100%; height: auto; display: block; background: #fff; border-radius: 12px; border: 1px solid #dfe6f3; }
 
@@ -210,6 +210,7 @@ footer a { color: var(--baby-pink); }
   .card { padding: 20px 18px; }
   .stamps li { grid-template-columns: 1fr; }
   #jumpCanvas { height: 300px; }
+  #bounceCanvas { height: 340px; }
   .chart-box.tall { height: 300px; }
 }
 
