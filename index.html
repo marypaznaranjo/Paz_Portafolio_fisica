@@ -52,6 +52,7 @@
   </ol>
 
   <ol style="margin-top:18px">
+    <li><a class="nav-link" href="#uso-ia"><span class="num">✦</span>Uso de inteligencia artificial</a></li>
     <li><a class="nav-link" href="#referencias"><span class="num">§</span>Referencias</a></li>
   </ol>
 
@@ -86,7 +87,7 @@
     <div class="card"><div class="part-label"><span class="letter">a</span>Caso de uso</div>
       <p style="margin:6px 0 0;font-size:.93rem">(i) El <b>caso concreto</b> con producto, sistema o industria; (ii) el <b>concepto físico</b> como ecuación explícita; (iii) la <b>justificación</b> frente a alternativas no físicas, con lo que se gana y lo que cuesta.</p></div>
     <div class="card"><div class="part-label"><span class="letter">b</span>Recurso de apoyo</div>
-      <p style="margin:6px 0 0;font-size:.93rem">El tipo prescrito para cada tema (visualización, simulación, diagrama o multimedia con análisis), casos elaborados con ayuda de Anthropic. (2026). Claude (versión Opus 5.5)  y con fuentes citadas.</p></div>
+      <p style="margin:6px 0 0;font-size:.93rem">El tipo prescrito para cada tema (visualización, simulación, diagrama o multimedia con análisis), con fuentes citadas. Las imágenes y figuras se crearon con Claude Opus 5.5 (Anthropic, 2026); ver <a href="#uso-ia">Uso de inteligencia artificial</a>.</p></div>
     <div class="card"><div class="part-label"><span class="letter">↔</span>Conexiones</div>
       <p style="margin:6px 0 0;font-size:.93rem">Al final de cada tema se señala cómo se relaciona con otros temas del portafolio y con lo visto en clase.</p></div>
   </div>
@@ -182,7 +183,7 @@
             <p class="chart-cap">Aceleración: componentes \(a_x, a_y\) y magnitud \(|\vec a|\).</p></div>
         </div>
         <div class="readout" id="t1Readout"></div>
-        <p class="chart-cap" style="margin-top:12px"><b>Fuente de los datos:</b> datos calculados por elaboración propia a partir de la ruta declarada, con el perfil de mínimo tirón (Mueller et al., 2015; polinomio publicado originalmente por Flash y Hogan, 1985), muestreados cada 0,5 s. Se pueden descargar en CSV con el botón de arriba.</p>
+        <p class="chart-cap" style="margin-top:12px"><b>Fuente de los datos:</b> datos calculados a partir de la ruta declarada, con el perfil de mínimo tirón (Mueller et al., 2015; polinomio publicado originalmente por Flash y Hogan, 1985), muestreados cada 0,5 s. Se pueden descargar en CSV con el botón de arriba. Gráficas elaboradas con Claude Opus 5.5 (Anthropic, 2026).</p>
       </div>
       <div class="note"><strong>Qué observar:</strong> en cada tramo, \(v_x\) y \(v_y\) guardan la misma proporción que \(\Delta x : \Delta y\), porque el dron va en línea recta. La rapidez tiene forma de campana (llega a cero en los puntos de control) y la aceleración cambia de signo a mitad del tramo: primero acelera y luego frena. En el tramo 2 \(v_y = 0\), porque solo hay movimiento hacia el este.</div>
     </div>
@@ -411,9 +412,9 @@
           <line x1="566" y1="436" x2="746" y2="436" stroke="#f7cfe2" stroke-width="1.5"/>
           <text x="566" y="460" class="eqT">Gradiente (h = 1,8 m):</text>
           <text x="566" y="482" class="eqT">1 − h/r = 0,992</text>
-          <text x="566" y="504" class="lblS">Diagrama propio · no a escala</text>
+          <text x="566" y="504" class="lblS">Esquema no a escala</text>
         </svg>
-        <p class="chart-cap">Diagrama elaborado por Anthropic. (2026). Claude (versión Opus 5.5). El anillo gira en sentido antihorario con velocidad angular \(\omega\). Para la persona, “abajo” es hacia afuera del anillo, pero la fuerza real que actúa sobre ella (la normal del piso) apunta hacia el eje.</p>
+        <p class="chart-cap">Diagrama elaborado con Claude Opus 5.5 (Anthropic, 2026). El anillo gira en sentido antihorario con velocidad angular \(\omega\). Para la persona, “abajo” es hacia afuera del anillo, pero la fuerza real que actúa sobre ella (la normal del piso) apunta hacia el eje.</p>
       </div>
 
       <h4>Caso numérico trabajado: ¿qué radio y qué rpm producen 1 g?</h4>
@@ -501,7 +502,7 @@
         <div class="btn-row"><label for="compSel" style="font-weight:600;font-size:.88rem;color:var(--regal-navy)">Resaltar la ventana oficial de:</label>
           <select id="compSel"><option value="0">C1</option><option value="1">C2</option><option value="2" selected>C3</option><option value="3">C4</option><option value="4">C5</option></select></div>
         <div class="chart-box tall"><canvas id="t4Temp"></canvas></div>
-        <p class="chart-cap"><b>Datos:</b> los rangos de trabajo (banda sombreada) son los oficiales de Pirelli para 2019: C1 110–140 °C, C2 110–135 °C, C3 105–135 °C, C4 90–120 °C y C5 85–115 °C. La forma de las curvas es <b>calculada por Anthropic. (2026). Claude (versión Opus 5.5)</b> con un modelo declarado: \(\mu(T) = \mu_{pico}\cdot 0{,}95^{\left((T-T_c)/w\right)^2}\), donde \(T_c\) es el centro del rango y \(w\) su semiancho, de modo que en los bordes oficiales el agarre cae al 95 % del pico. Los valores de \(\mu_{pico}\) (1,62 a 1,78) son ilustrativos: Pirelli no los publica.</p>
+        <p class="chart-cap"><b>Datos:</b> los rangos de trabajo (banda sombreada) son los oficiales de Pirelli para 2019: C1 110–140 °C, C2 110–135 °C, C3 105–135 °C, C4 90–120 °C y C5 85–115 °C. La forma de las curvas se calculó con un <b>modelo declarado</b>: \(\mu(T) = \mu_{pico}\cdot 0{,}95^{\left((T-T_c)/w\right)^2}\), donde \(T_c\) es el centro del rango y \(w\) su semiancho, de modo que en los bordes oficiales el agarre cae al 95 % del pico. Los valores de \(\mu_{pico}\) (1,62 a 1,78) son ilustrativos: Pirelli no los publica. Gráfica elaborada con Claude Opus 5.5 (Anthropic, 2026).</p>
       </div>
 
       <h3 style="margin-top:22px">Gráfica 2 · Fuerza lateral máxima en función de la carga vertical</h3>
@@ -575,7 +576,7 @@
             Su navegador no puede reproducir video MP4.
           </video>
         </div>
-        <p class="chart-cap">Video elaborado por Anthropic. (2026). Claude (versión Opus 5.5): animación del modelo de los modos <code>setModeSlopeFeedback</code> y <code>setModeWeapon</code>. A la izquierda, el gatillo con el par de fuerzas de acción y reacción; a la derecha, la curva fuerza–desplazamiento que se traza en vivo. El <b>audio</b> es la señal de mando del actuador: su volumen es proporcional a la fuerza. Fuerza y posición están normalizadas de 0 a 1, como en la API.</p>
+        <p class="chart-cap">Video elaborado con Claude Opus 5.5 (Anthropic, 2026): animación del modelo de los modos <code>setModeSlopeFeedback</code> y <code>setModeWeapon</code>. A la izquierda, el gatillo con el par de fuerzas de acción y reacción; a la derecha, la curva fuerza–desplazamiento que se traza en vivo. El <b>audio</b> es la señal de mando del actuador: su volumen es proporcional a la fuerza. Fuerza y posición están normalizadas de 0 a 1, como en la API.</p>
       </div>
 
       <h4>Análisis escrito por instantes (haga clic en el tiempo para saltar)</h4>
@@ -622,12 +623,23 @@
 </section>
 
 <!-- ======================================================= -->
+<!-- USO DE INTELIGENCIA ARTIFICIAL                          -->
+<!-- ======================================================= -->
+<section class="block" id="uso-ia">
+  <h2 class="section-title">Uso de inteligencia artificial</h2>
+  <div class="card">
+    <p>Para la creación de las imágenes y figuras de este portafolio se utilizó Claude, versión Opus 5.5 (Anthropic, 2026): las gráficas de los temas 1 y 4, el diagrama del tema 3 y el video del tema 5. El modelo, los parámetros y las fuentes de cada figura se declaran en su pie.</p>
+  </div>
+</section>
+
+<!-- ======================================================= -->
 <!-- REFERENCIAS                                             -->
 <!-- ======================================================= -->
 <section class="block" id="referencias">
   <h2 class="section-title">Referencias</h2>
   <div class="card">
     <ol class="refs">
+      <li>Anthropic. (2026). <i>Claude</i> (versión Opus 5.5) [Modelo de lenguaje grande]. https://claude.ai</li>
       <li>Apple Inc. (s. f.). <i>GCDualSenseAdaptiveTrigger</i>. Apple Developer Documentation. https://developer.apple.com/documentation/gamecontroller/gcdualsenseadaptivetrigger</li>
       <li>Colgate, J. E., y Schenkel, G. G. (1997). Passivity of a class of sampled-data systems: Application to haptic interfaces. <i>Journal of Robotic Systems, 14</i>(1), 37–47.</li>
       <li>EA Sports / Codemasters. (2025). <i>F1® 25 UDP Specification</i>. EA Forums. https://forums.ea.com/discussions/f1-25-general-discussion-en/discussion-f1%c2%ae-25-udp-specification/12187351</li>
@@ -637,6 +649,7 @@
       <li>Hall, T. W. (s. f.). <i>SpinCalc: An artificial-gravity calculator</i>. http://www.artificial-gravity.com/sw/SpinCalc/</li>
       <li>Johnson, R. D., y Holbrow, C. (Eds.). (1977). <i>Space settlements: A design study</i> (NASA SP-413). NASA.</li>
       <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. En <i>IEEE International Conference on Robotics and Automation</i> (pp. 2520–2525).</li>
+      <li>Mueller, M. W., Hehn, M., y D’Andrea, R. (2015). A computationally efficient motion primitive for quadrocopter trajectory generation. <i>IEEE Transactions on Robotics, 31</i>(6), 1294–1310.</li>
       <li>National Space Society. (s. f.). <i>Stanford Torus Space Settlement</i>. https://nss.org/stanford-torus-space-settlement/</li>
       <li>Pacejka, H. B., y Besselink, I. (2012). <i>Tire and vehicle dynamics</i> (3.ª ed.). Butterworth-Heinemann.</li>
       <li>Pirelli. (2019). <i>What's new with Pirelli's 2019 Formula 1 tyres?</i> https://press.pirelli.com/whats-new-with-pirellis-2019-formula-1-tyres/</li>
@@ -645,7 +658,7 @@
       <li>PX4 Autopilot. (s. f.). <i>Using PX4's navigation filter (EKF2)</i>. https://docs.px4.io/main/en/advanced_config/tuning_the_ecl_ekf.html</li>
       <li>Thorson, M., y Berry, N. (2018). <i>Celeste: Player.cs</i> [Código fuente]. GitHub. https://github.com/NoelFB/Celeste</li>
     </ol>
-    <p class="chart-cap">Todas las gráficas, la simulación, el diagrama y el video de este portafolio son de elaboración propia. Cuando los datos son calculados, se declara el modelo y sus parámetros junto a cada recurso.</p>
+    <p class="chart-cap">Cuando los datos son calculados, se declara el modelo y sus parámetros junto a cada recurso. El uso de inteligencia artificial se describe en la sección <a href="#uso-ia">Uso de inteligencia artificial</a>.</p>
   </div>
 </section>
 
@@ -653,8 +666,8 @@
 
 <footer>
   <div class="wrap">
-    Portafolio de evidencias · Física I (FUN-18) · Universidad CENFOTEC · 2026-C3 · Paz Naranjo ·
-    <a href="https://github.com/USUARIO/portafolio-fisica" id="repoLinkFoot">Repositorio público</a>
+    Portafolio de evidencias · Física I (FUN-18) · Universidad CENFOTEC · 2026-C3 · Paz Naranjo Bonilla ·
+    <a href="https://github.com/marypaznaranjo/Paz_Portafolio_fisica" id="repoLinkFoot">Repositorio público</a>
   </div>
 </footer>
 </main>

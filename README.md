@@ -1,5 +1,9 @@
 # Paz_Portafolio_fisica
-Este portafolio recopila las evidencias contrectas de aplicaciones de la física mecánica
+Portafolio de evidencias de **Física I (FUN-18)** · Universidad CENFOTEC · 2026-C3.
+Recopila aplicaciones concretas de la física mecánica al desarrollo de software.
+
+- **Sitio publicado:** https://marypaznaranjo.github.io/Paz_Portafolio_fisica/
+- **Estudiante:** Paz Naranjo Bonilla · **Docente:** Andrés Castro Núñez
 ## Avance 1 · Cinemática y Dinámica
 | Tema | Recurso |
 |---|---|
@@ -18,3 +22,6 @@ media/            Video del Tema 5
 lib/              KaTeX 0.16.9 y Chart.js 4.4.1 (incluidos localmente)
 fonts/            Montserrat (SIL Open Font License)
 ```
+
+## Uso de inteligencia artificial
+Para la creación de las imágenes y figuras se utilizó Claude, versión Opus 5.5 (Anthropic, 2026). El detalle está en la sección "Uso de inteligencia artificial" del sitio.
