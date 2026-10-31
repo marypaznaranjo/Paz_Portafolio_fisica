@@ -18,13 +18,15 @@ Recopila aplicaciones concretas de la física mecánica al desarrollo de softwar
 |---|---|
 | 6. Frenado regenerativo en un vehículo eléctrico | Visualización de datos (ciclos UDDS y HWFET de la EPA) |
 | 7. El coeficiente de restitución en un motor de videojuego: por qué la pelota rebota mal | Simulación interactiva |
+| 8. Ruedas de reacción: cómo un satélite se gira sin empujarse contra nada | Diagrama (SVG propio) + calculadora |
+| 9. Asistencia gravitatoria: cómo la Voyager ganó velocidad sin gastar combustible | Visualización de datos (NASA/JPL Horizons) |
 
 ## Estructura
 ```
-index.html        Página única con los 13 temas (7 desarrollados)
+index.html        Página única con los 13 temas (9 desarrollados)
 css/              Estilos (Montserrat + paleta navy/rosa)
-js/               Lógica de cada recurso (tema1.js … tema7.js)
-data/             Ciclos de manejo de la EPA usados en el Tema 6 (CSV)
+js/               Lógica de cada recurso (tema1.js … tema9.js)
+data/             Ciclos de manejo de la EPA (Tema 6) y trayectoria de la Voyager 2 de JPL Horizons (Tema 9), en CSV
 media/            Video del Tema 5
 lib/              KaTeX 0.16.9 y Chart.js 4.4.1 (incluidos localmente)
 fonts/            Montserrat (SIL Open Font License)

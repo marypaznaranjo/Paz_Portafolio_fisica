@@ -35,12 +35,12 @@
     <li><a class="nav-link" href="#tema-5"><span class="num">5</span>El resorte virtual detrás de un control háptico</a></li>
   </ol>
 
-  <div class="nav-group">Avance 2 · Energía y momento <span class="pill soon">En curso</span></div>
+  <div class="nav-group">Avance 2 · Energía y momento</div>
   <ol>
     <li><a class="nav-link" href="#tema-6"><span class="num">6</span>Frenado regenerativo en un vehículo eléctrico</a></li>
     <li><a class="nav-link" href="#tema-7"><span class="num">7</span>El coeficiente de restitución en un motor de videojuego: por qué la pelota rebota mal</a></li>
-    <li><a class="nav-link future" href="#avance-2"><span class="num">8</span>Ruedas de reacción en satélites</a></li>
-    <li><a class="nav-link future" href="#avance-2"><span class="num">9</span>Asistencia gravitatoria de la Voyager</a></li>
+    <li><a class="nav-link" href="#tema-8"><span class="num">8</span>Ruedas de reacción: cómo un satélite se gira sin empujarse contra nada</a></li>
+    <li><a class="nav-link" href="#tema-9"><span class="num">9</span>Asistencia gravitatoria: cómo la Voyager ganó velocidad sin gastar combustible</a></li>
   </ol>
 
   <div class="nav-group">Entrega final <span class="pill soon">Próximamente</span></div>
@@ -68,11 +68,11 @@
   <div class="wrap">
     <div class="kicker">Portafolio de evidencias · Avance 2</div>
     <h1>La física <em>detrás</em> del software</h1>
-    <p class="lead">Casos reales donde la cinemática, la dinámica, la energía y el momento que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el frenado de un auto eléctrico y el rebote de una pelota en un motor de juego. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
+    <p class="lead">Casos reales donde la cinemática, la dinámica, la energía y el momento que vemos en clase se convierten en código: desde el autopiloto de un dron hasta el frenado de un auto eléctrico, el rebote de una pelota en un motor de juego, el giro de un satélite y el viaje de la Voyager. Cada entrada nombra el producto, escribe la ecuación y justifica por qué modelar la física es mejor que fingirla.</p>
     <div class="meta-grid">
-      <div class="meta"><small>Estudiante</small><span>Paz Naranjo Bonilla</span></div>
+      <div class="meta"><small>Estudiante</small><span>Paz Naranjo Bonilla <3 </span></div>
       <div class="meta"><small>Curso</small><span>FUN-18 · Física I</span></div>
-      <div class="meta"><small>Docente</small><span>Andrés Castro Núñez</span></div>
+      <div class="meta"><small>Docente</small><span>Andrés Castro Núñez :)</span></div>
       <div class="meta"><small>Periodo</small><span>2026-C3 · CENFOTEC</span></div>
     </div>
   </div>
@@ -111,6 +111,11 @@
         <tr><td>6 ↔ 7</td><td>Qué fracción de la energía cinética sobrevive</td><td>En la frenada, \(E_{rec}/|\Delta K|\); en el choque, \(K'/K = e^2\). En ambos casos, lo que falta se transforma en calor o deformación.</td></tr>
         <tr><td>2 ↔ 7</td><td>Parámetros físicos como decisiones de diseño</td><td>Entre botes la pelota cae como el personaje que salta; en un caso se ajusta \(g\), en el otro \(e\), y ambos pueden configurarse “irreales”.</td></tr>
         <tr><td>5 ↔ 7</td><td>Límites del cálculo en pasos discretos</td><td>El resorte háptico necesita amortiguamiento para ser estable; el rebote necesita un umbral porque el modelo ideal da infinitos botes en tiempo finito.</td></tr>
+        <tr><td>7 ↔ 8</td><td>Conservación del momento (lineal y angular)</td><td>En un choque se conserva \(\sum m\vec v\); en el satélite se conserva \(I\omega + J_s\Omega\). La rueda gira hacia un lado y el satélite “retrocede” hacia el otro.</td></tr>
+        <tr><td>5 ↔ 8</td><td>Tercera ley de Newton</td><td>El gatillo empuja al dedo como el dedo al gatillo; el motor aplica \(\tau\) a la rueda y la rueda aplica \(-\tau\) al satélite.</td></tr>
+        <tr><td>8 ↔ 9</td><td>Moverse sin empujarse contra nada</td><td>El satélite intercambia momento angular con su rueda; la Voyager intercambia momento lineal con un planeta. Sin un cuerpo con quién intercambiar, no hay maniobra.</td></tr>
+        <tr><td>7 ↔ 9</td><td>Choque elástico con un cuerpo en movimiento</td><td>En el marco del planeta la sonda “rebota” con \(e = 1\) (misma rapidez de entrada y salida); en el marco del Sol sale más rápido, como una pelota golpeada por una raqueta que avanza.</td></tr>
+        <tr><td>6 ↔ 9</td><td>Conversión entre energía cinética y potencial</td><td>En el auto, \(K\) se va a la batería o a calor; en la Voyager, \(K\) se convierte en \(U = -GMm/r\) al alejarse del Sol y vuelve sin pérdidas.</td></tr>
       </tbody>
     </table>
   </div>
@@ -768,16 +773,319 @@
 </article>
 
 <!-- ======================================================= -->
+<!-- TEMA 8                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-8">
+  <div class="tema-head">
+    <div class="tema-num">8</div>
+    <div>
+      <div class="eyebrow">Momento angular y torque</div>
+      <h2>Tema 8 — Ruedas de reacción: cómo un satélite se gira sin empujarse contra nada</h2>
+      <div class="tags"><span class="pill res">Recurso: Diagrama</span><span class="pill">L = Iω · τ = dL/dt · conservación del momento angular</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>En el espacio no hay nada contra qué empujarse, y aun así un telescopio espacial puede girar y quedarse apuntando a una estrella durante horas. Lo logra con <b>ruedas de reacción</b>: discos que un motor eléctrico acelera o frena <b>dentro</b> del satélite. El caso más conocido es el telescopio <b>Kepler</b> de la NASA: llevaba cuatro ruedas y necesitaba tres para apuntar con precisión. En mayo de 2013 falló la segunda y terminó su misión original. Ingenieros de la NASA y de Ball Aerospace la rescataron como <b>K2</b>: con dos ruedas y propulsores, y orientando la nave casi paralela a su trayectoria alrededor del Sol para que la presión de la luz solar quedara equilibrada y sirviera de “tercera rueda” (NASA, 2013; NESC, s. f.).</p>
+      <p>En software, <b>Basilisk</b>, el marco de simulación astrodinámica de código abierto del laboratorio AVS de la Universidad de Colorado Boulder (Kenneally et al., 2020), modela las ruedas con hojas de datos reales. Para la <b>Honeywell HR16</b> fija una velocidad máxima de <b>6000 rpm</b>, un torque máximo de <b>0,2 N·m</b> y capacidades de <b>50, 75 o 100 N·m·s</b>; si no se da la inercia del disco, la calcula como \(J_s = h_{máx}/\Omega_{máx}\). Sus módulos de vuelo hacen exactamente lo que explica este tema: <code>rwMotorTorque</code> reparte entre las ruedas el torque que pide el control, y <code>thrMomentumManagement</code> y <code>mtbMomentumManagementSimple</code> calculan cuánto momento angular hay que “descargar” con propulsores o con magnetotorques cuando las ruedas se acercan a su límite.</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>El momento angular es el equivalente rotacional del momento lineal, y el torque es lo que lo cambia (segunda ley de Newton para la rotación):</p>
+      <div class="eq">\[ L = I\,\omega, \qquad \tau_{neto} = \frac{dL}{dt} \]</div>
+      <p>El motor de la rueda está montado en el satélite: cuando aplica un torque \(\tau\) a la rueda, la rueda aplica \(-\tau\) al satélite (tercera ley). Es un torque <b>interno</b>, así que el momento angular total no cambia. Si todo empieza en reposo:</p>
+      <div class="eq">\[ \underbrace{I_{sat}\,\omega_{sat}}_{\text{satélite}} + \underbrace{J_s\,\Omega}_{\text{rueda}} = 0 \quad\Longrightarrow\quad \omega_{sat} = -\frac{J_s}{I_{sat}}\,\Omega, \qquad \Delta\theta_{sat} = -\frac{J_s}{I_{sat}}\,\Delta\theta_{rueda} \]</div>
+      <p>La rueda gira muy rápido en un sentido y el satélite gira despacio en el otro. Como \(J_s \ll I_{sat}\), la rueda da miles de vueltas para que el satélite gire unos grados. Para frenar el giro, el motor desacelera la rueda y el satélite se detiene en la nueva orientación.</p>
+      <p>El límite aparece cuando actúa un torque <b>externo</b> pequeño pero constante (presión de radiación solar, gradiente de gravedad, campo magnético). Para que el satélite no gire, la rueda debe absorberlo, y su momento crece sin parar:</p>
+      <div class="eq">\[ h_{rueda}(t) = h_0 + \int_0^t \tau_{ext}\,dt, \qquad h_{máx} = J_s\,\Omega_{máx} \quad\Longrightarrow\quad t_{sat} = \frac{h_{máx} - h_0}{\tau_{ext}} \]</div>
+      <p>Ejemplo con la HR16 de 50 N·m·s: \(J_s = 50 / 628{,}3 = 0{,}0796\ \text{kg}\cdot\text{m}^2\). Con una perturbación de 50 µN·m, la rueda se satura en \(50 / (5\times10^{-5}) = 10^6\ \text{s} \approx 11{,}6\) días. Solo un torque externo puede vaciarla: propulsores (\(\vec\tau = \vec r \times \vec F\)) o magnetotorques (\(\vec\tau = \vec m \times \vec B\)).</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué modelar el momento angular y no “rotar el modelo”?</h4>
+      <p>En una animación o en un simulador simplificado, girar un satélite es cambiar un ángulo: se interpola la orientación de A a B en el tiempo que se quiera. Eso no sirve para diseñar ni para operar un satélite real, porque ignora tres cosas que solo aparecen al modelar \(L\): (1) la maniobra más rápida posible depende de \(I_{sat}\) y del torque del motor (con 0,2 N·m, girar 90° un satélite de 1000 kg·m² toma unos 3 minutos); (2) cada maniobra y cada perturbación dejan momento guardado en las ruedas, y hay que planificar cuándo descargarlo; y (3) si una rueda falla, solo un modelo físico permite rediseñar el control, como hizo Kepler al pasar a K2.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Tiempos de maniobra realistas, calculados con \(I\), \(J_s\) y el torque disponible.</li>
+          <li>Un “presupuesto” de momento angular: saber cuándo se saturan las ruedas y cuándo descargarlas.</li>
+          <li>Probar fallas (una rueda menos) en el simulador antes de que ocurran en órbita.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Medir el tensor de inercia del satélite y caracterizar cada rueda (fricción, desbalance, ruido).</li>
+          <li>Las perturbaciones externas son pequeñas y difíciles de modelar con precisión.</li>
+          <li>En 3D las ruedas no están alineadas con los ejes y hay que resolver un sistema de ecuaciones (eso hace <code>rwMotorTorque</code>).</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: diagrama</div>
+      <h3>Intercambio de momento angular entre el satélite y su rueda, y qué pasa al saturarse</h3>
+      <div class="resource">
+        <svg class="diagram-svg" viewBox="0 0 780 700" role="img" aria-labelledby="rwTitle rwDesc">
+          <title id="rwTitle">Diagrama de un satélite con una rueda de reacción</title>
+          <desc id="rwDesc">Panel A: el motor hace girar la rueda en sentido antihorario con velocidad Omega y el satélite gira en sentido horario con velocidad omega; los momentos angulares de la rueda y del satélite son iguales y opuestos y suman cero. Panel B: con un torque externo constante, el momento de la rueda crece hasta su máximo; ahí se satura y se descarga con un torque externo, en forma de diente de sierra. A la derecha, las ecuaciones.</desc>
+          <defs>
+            <marker id="rwRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c80056"/></marker>
+            <marker id="rwPink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f35d9c"/></marker>
+            <marker id="rwNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#01336e"/></marker>
+            <marker id="rwInk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#3b4a68"/></marker>
+          </defs>
+          <style>
+            .rwL{font:600 13px Montserrat,sans-serif;fill:#042255}
+            .rwS{font:500 11.5px Montserrat,sans-serif;fill:#3b4a68}
+            .rwR{font:700 13px Montserrat,sans-serif;fill:#c80056}
+            .rwP{font:700 13px Montserrat,sans-serif;fill:#f35d9c}
+            .rwE{font:600 13px Montserrat,sans-serif;fill:#042255}
+            .rwH{font:800 13.5px Montserrat,sans-serif;fill:#c80056;letter-spacing:.06em}
+          </style>
+
+          <!-- ================= PANEL A ================= -->
+          <rect x="16" y="16" width="516" height="330" rx="14" fill="#fff" stroke="#e6dbe6"/>
+          <text x="32" y="42" class="rwH">A · INTERCAMBIO DE MOMENTO ANGULAR</text>
+          <text x="32" y="60" class="rwS">Vista desde el eje de giro z (sale de la página) · τ_ext = 0</text>
+
+          <!-- giro del satélite (horario) -->
+          <path d="M 147 95 A 130 130 0 0 1 313 95" fill="none" stroke="#01336e" stroke-width="3.5" marker-end="url(#rwNavy)"/>
+          <text x="320" y="92" class="rwL" style="font-size:15px;font-weight:800">ω<tspan style="font-size:11px" dy="3">sat</tspan></text>
+          <text x="320" y="110" class="rwS">giro lento del satélite</text>
+
+          <!-- paneles solares -->
+          <line x1="160" y1="195" x2="170" y2="195" stroke="#01336e" stroke-width="4"/>
+          <line x1="290" y1="195" x2="300" y2="195" stroke="#01336e" stroke-width="4"/>
+          <g fill="#dfe7f5" stroke="#01336e" stroke-width="1.5">
+            <rect x="58" y="172" width="102" height="46" rx="3"/><rect x="300" y="172" width="102" height="46" rx="3"/>
+          </g>
+          <g stroke="#9fb3d6" stroke-width="1">
+            <line x1="92" y1="172" x2="92" y2="218"/><line x1="126" y1="172" x2="126" y2="218"/><line x1="58" y1="195" x2="160" y2="195"/>
+            <line x1="334" y1="172" x2="334" y2="218"/><line x1="368" y1="172" x2="368" y2="218"/><line x1="300" y1="195" x2="402" y2="195"/>
+          </g>
+          <!-- cuerpo -->
+          <rect x="170" y="140" width="120" height="110" rx="10" fill="#042255"/>
+          <!-- rueda -->
+          <circle cx="230" cy="195" r="32" fill="#ff97cc" stroke="#fff" stroke-width="2"/>
+          <g stroke="#c80056" stroke-width="2.5" stroke-linecap="round">
+            <line x1="230" y1="167" x2="230" y2="223"/><line x1="202" y1="195" x2="258" y2="195"/>
+          </g>
+          <circle cx="230" cy="195" r="7" fill="#fff" stroke="#c80056" stroke-width="2"/>
+          <circle cx="230" cy="195" r="2.2" fill="#c80056"/>
+          <!-- giro de la rueda (antihorario) -->
+          <path d="M 270.8 185 A 42 42 0 0 0 189.2 185" fill="none" stroke="#ff97cc" stroke-width="3" marker-end="url(#rwPink)"/>
+          <text x="177" y="160" class="rwP" style="font-size:15px;fill:#ff97cc">Ω</text>
+          <text x="230" y="243" class="rwS" text-anchor="middle" style="fill:#ff97cc;font-weight:600;font-size:10.5px">rueda + motor</text>
+
+          <!-- rótulos de torques -->
+          <line x1="150" y1="276" x2="200" y2="226" stroke="#3b4a68" stroke-width="1.1"/>
+          <text x="32" y="284" class="rwL" style="fill:#f35d9c">τ: motor → rueda</text>
+          <text x="32" y="300" class="rwS">la acelera en sentido antihorario</text>
+          <line x1="300" y1="276" x2="276" y2="246" stroke="#3b4a68" stroke-width="1.1"/>
+          <text x="262" y="292" class="rwL" style="fill:#01336e">−τ: rueda → satélite</text>
+          <text x="262" y="308" class="rwS">par de reacción (3.ª ley)</text>
+          <text x="32" y="330" class="rwS">El eje z (punto central) es perpendicular a la página. Esquema no a escala.</text>
+
+          <!-- balance de L -->
+          <text x="418" y="64" class="rwL">L sobre el eje z</text>
+          <line x1="430" y1="195" x2="522" y2="195" stroke="#042255" stroke-width="1.5"/>
+          <text x="424" y="199" class="rwS" text-anchor="end">0</text>
+          <line x1="455" y1="195" x2="455" y2="104" stroke="#f35d9c" stroke-width="7" marker-end="url(#rwPink)"/>
+          <line x1="495" y1="195" x2="495" y2="286" stroke="#01336e" stroke-width="7" marker-end="url(#rwNavy)"/>
+          <text x="436" y="132" class="rwP" text-anchor="end">J_sΩ</text>
+          <text x="495" y="306" class="rwL" text-anchor="middle" style="fill:#01336e">I ω_sat</text>
+          <text x="475" y="226" class="rwS" text-anchor="middle" style="font-size:10.5px">suma</text>
+          <text x="475" y="240" class="rwR" text-anchor="middle">= 0</text>
+
+          <!-- ================= PANEL B ================= -->
+          <rect x="16" y="362" width="516" height="322" rx="14" fill="#fff" stroke="#e6dbe6"/>
+          <text x="32" y="388" class="rwH">B · ¿Y SI LA RUEDA LLEGA A Ω_máx?</text>
+          <text x="32" y="410" class="rwS">τ_ext (presión solar, gradiente de gravedad) se acumula en la rueda.</text>
+          <text x="32" y="425" class="rwS">En Ω_máx ya no absorbe más: el satélite gira sin control en ese eje.</text>
+          <text x="32" y="440" class="rwS">Descarga: un torque externo (propulsores r × F o magnetotorques m × B)</text>
+          <text x="32" y="455" class="rwS">frena la rueda mientras el control mantiene quieto al satélite.</text>
+
+          <!-- ejes -->
+          <line x1="70" y1="650" x2="512" y2="650" stroke="#3b4a68" stroke-width="1.3" marker-end="url(#rwInk)"/>
+          <line x1="70" y1="650" x2="70" y2="474" stroke="#3b4a68" stroke-width="1.3" marker-end="url(#rwInk)"/>
+          <text x="80" y="486" class="rwS" style="font-weight:600">L de la rueda</text>
+          <text x="512" y="670" class="rwS" text-anchor="end" style="font-weight:600">tiempo</text>
+          <!-- h_max -->
+          <line x1="70" y1="500" x2="508" y2="500" stroke="#c80056" stroke-width="1.6" stroke-dasharray="7 5"/>
+          <text x="330" y="492" class="rwR" text-anchor="middle" style="font-size:12px">h_máx = J_s Ω_máx</text>
+          <!-- diente de sierra -->
+          <polyline points="70,630 240,500" fill="none" stroke="#01336e" stroke-width="3"/>
+          <polyline points="250,630 420,500" fill="none" stroke="#01336e" stroke-width="3"/>
+          <polyline points="430,630 506,572" fill="none" stroke="#01336e" stroke-width="3"/>
+          <line x1="241" y1="503" x2="249" y2="622" stroke="#f35d9c" stroke-width="3" marker-end="url(#rwPink)"/>
+          <line x1="421" y1="503" x2="429" y2="622" stroke="#f35d9c" stroke-width="3" marker-end="url(#rwPink)"/>
+          <circle cx="240" cy="500" r="7" fill="#fff" stroke="#c80056" stroke-width="3"/>
+          <circle cx="420" cy="500" r="7" fill="#fff" stroke="#c80056" stroke-width="3"/>
+          <text x="228" y="490" class="rwR" text-anchor="end" style="font-size:12px">saturada</text>
+          <text x="80" y="530" class="rwS" style="font-weight:600">pendiente</text>
+          <text x="80" y="546" class="rwS" style="font-weight:600">= τ_ext</text>
+          <text x="236" y="568" class="rwP" text-anchor="end" style="font-size:12px">descarga</text>
+          <text x="236" y="584" class="rwS" text-anchor="end">torque externo</text>
+          <text x="70" y="670" class="rwS">t_sat = h_máx / τ_ext</text>
+
+          <!-- ================= ECUACIONES ================= -->
+          <rect x="548" y="16" width="216" height="668" rx="16" fill="#fff0f7" stroke="#f7cfe2"/>
+          <text x="566" y="46" class="rwH">ECUACIONES</text>
+          <text x="566" y="74" class="rwE">L = I ω</text>
+          <text x="566" y="98" class="rwE">τ_neto = dL/dt</text>
+          <text x="566" y="122" class="rwE">τ_sat = −τ_rueda</text>
+          <line x1="566" y1="136" x2="746" y2="136" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="160" class="rwH">SIN TORQUE EXTERNO</text>
+          <text x="566" y="186" class="rwE">I ω_sat + J_s Ω = 0</text>
+          <text x="566" y="210" class="rwE">ω_sat = −(J_s / I) Ω</text>
+          <text x="566" y="234" class="rwE">Δθ_sat = −(J_s/I) Δθ_rueda</text>
+          <line x1="566" y1="250" x2="746" y2="250" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="274" class="rwH">MANIOBRA 90°</text>
+          <text x="566" y="298" class="rwS">I = 1000 kg·m², τ = 0,2 N·m</text>
+          <text x="566" y="320" class="rwE">t = 2√(θ I / τ) = 177 s</text>
+          <text x="566" y="344" class="rwE">h_pico = √(θ τ I)</text>
+          <text x="566" y="366" class="rwE">       = 17,7 N·m·s</text>
+          <text x="566" y="388" class="rwE">Ω_pico ≈ 2130 rpm</text>
+          <line x1="566" y1="404" x2="746" y2="404" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="428" class="rwH">SATURACIÓN</text>
+          <text x="566" y="454" class="rwE">h_máx = J_s Ω_máx</text>
+          <text x="566" y="478" class="rwE">t_sat = h_máx / τ_ext</text>
+          <text x="566" y="502" class="rwE">ΔL = ∫ τ_ext dt</text>
+          <text x="566" y="526" class="rwS">τ = r × F  ·  τ = m × B</text>
+          <line x1="566" y1="542" x2="746" y2="542" stroke="#f7cfe2" stroke-width="1.5"/>
+          <text x="566" y="566" class="rwH">HR16 (BASILISK)</text>
+          <text x="566" y="590" class="rwE">Ω_máx = 6000 rpm</text>
+          <text x="566" y="612" class="rwE">h_máx = 50 N·m·s</text>
+          <text x="566" y="634" class="rwE">τ_máx = 0,2 N·m</text>
+          <text x="566" y="656" class="rwR" style="font-size:14px">J_s = 0,0796 kg·m²</text>
+        </svg>
+        <p class="chart-cap">Diagrama elaborado con Claude Opus 5.5 (Anthropic, 2026); parámetros y verificación de la autora. Datos de la rueda HR16 tomados de Basilisk (<code>simIncludeRW.py</code>); el momento de inercia del satélite (1000 kg·m²) es <b>ilustrativo</b>. Se supone un solo eje de giro, satélite rígido y \(J_s \ll I_{sat}\) (el momento de la rueda se aproxima por \(J_s\Omega\)).</p>
+      </div>
+
+      <h4>¿Qué ocurre cuando la rueda llega a su velocidad máxima?</h4>
+      <ol>
+        <li><b>Antes del límite:</b> cada vez que algo externo intenta girar el satélite, el control acelera la rueda en sentido contrario y el satélite se queda quieto. El momento angular que entra al sistema se guarda en la rueda.</li>
+        <li><b>En el límite (\(\Omega = \Omega_{máx}\)):</b> el motor ya no puede acelerar más la rueda, así que no puede producir torque en ese sentido. Sin torque de control, el siguiente \(\tau_{ext}\) hace girar al satélite: pierde el apuntamiento.</li>
+        <li><b>Descarga del momento (<i>desaturación</i>):</b> la conservación de \(L\) impide vaciar la rueda “desde adentro”; si el motor la frena, el satélite gira. Por eso se aplica un torque <b>externo</b> (propulsores o magnetotorques) mientras el motor frena la rueda: el satélite no gira y el momento sale del sistema. En Basilisk, <code>thrMomentumManagement</code> pide un cambio \(\Delta\vec H = -\left(|\vec h_s| - h_{s,mín}\right)\hat h_s\) cuando el momento de las ruedas supera el umbral \(h_{s,mín}\).</li>
+        <li><b>Si una rueda falla:</b> el satélite pierde un eje de control. Kepler (cuatro ruedas, tres necesarias) siguió operando con dos ruedas gracias a la presión solar y los propulsores (misión K2).</li>
+      </ol>
+
+      <div class="card" style="box-shadow:none;margin-top:14px">
+        <div class="part-label" style="margin-bottom:2px">Calculadora complementaria</div>
+        <p style="font-size:.88rem;margin:0 0 6px">Mueva la inercia del satélite, el ángulo y la perturbación para ver cuánto tarda la maniobra y cuándo se satura la rueda HR16.</p>
+        <div class="controls">
+          <div class="ctrl"><label for="rwI"><span>Momento de inercia del satélite, I</span> <output id="rwIOut"></output></label><input type="range" id="rwI" min="100" max="5000" step="50" value="1000"></div>
+          <div class="ctrl"><label for="rwTheta"><span>Ángulo de la maniobra, θ</span> <output id="rwThetaOut"></output></label><input type="range" id="rwTheta" min="5" max="180" step="1" value="90"></div>
+          <div class="ctrl"><label for="rwTau"><span>Torque externo de perturbación, τ<sub>ext</sub></span> <output id="rwTauOut"></output></label><input type="range" id="rwTau" min="5" max="500" step="5" value="50"></div>
+          <div class="ctrl"><label for="rwH"><span>Capacidad de la rueda HR16, h<sub>máx</sub></span></label>
+            <select id="rwH" style="width:100%;margin-top:4px"><option value="50" selected>50 N·m·s</option><option value="75">75 N·m·s</option><option value="100">100 N·m·s</option></select></div>
+        </div>
+        <div class="readout" id="rwReadout"></div>
+        <p class="chart-cap">Maniobra de reposo a reposo con torque máximo constante (mitad acelerando, mitad frenando); si el momento necesario supera \(h_{máx}\), se agrega un tramo a velocidad constante. Inercia y perturbación ilustrativas.</p>
+      </div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-7">Tema 7</a>: allá se conservaba el momento lineal en un choque; aquí se conserva el momento angular, y el satélite “retrocede” girando como un cañón retrocede al disparar. Con el <a href="#tema-3">Tema 3</a>: \(\omega\), período y rpm son las mismas magnitudes del movimiento circular, ahora con inercia \(I\). Con el <a href="#tema-5">Tema 5</a>: el par motor → rueda y rueda → satélite es la tercera ley, igual que gatillo ↔ dedo. Con el <a href="#tema-9">Tema 9</a>: ambos son maniobras “sin empujarse contra nada”, posibles porque se intercambia momento con otro cuerpo. En clase: momento angular \(L = I\omega\), torque, segunda ley rotacional y conservación del momento angular.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Kenneally, P. W., Piggott, S., y Schaub, H. (2020). Basilisk: A flexible, scalable and modular astrodynamics simulation framework. <i>Journal of Aerospace Information Systems, 17</i>(9), 496–507. <a href="https://doi.org/10.2514/1.I010762" target="_blank" rel="noopener">doi.org/10.2514/1.I010762</a></li>
+      <li>AVS Lab. (s. f.). <i>Basilisk</i> [Código fuente: <code>simIncludeRW.py</code>, <code>rwMotorTorque</code>, <code>thrMomentumManagement</code>, <code>mtbMomentumManagementSimple</code>]. GitHub. <a href="https://github.com/AVSLab/basilisk" target="_blank" rel="noopener">github.com/AVSLab/basilisk</a></li>
+      <li>NASA. (2013, 26 de noviembre). <i>How NASA revived the Kepler space telescope</i>. Phys.org. <a href="https://phys.org/news/2013-11-nasa-revived-kepler-space-telescope.html" target="_blank" rel="noopener">phys.org</a></li>
+      <li>NASA Engineering and Safety Center. (s. f.). <i>Tackling hybrid control is right in the GNC wheelhouse</i>. NASA. <a href="https://www.nasa.gov/sites/default/files/atoms/files/gnc_wheelhouse.pdf" target="_blank" rel="noopener">nasa.gov</a></li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
+<!-- TEMA 9                                                  -->
+<!-- ======================================================= -->
+<article class="tema" id="tema-9">
+  <div class="tema-head">
+    <div class="tema-num">9</div>
+    <div>
+      <div class="eyebrow">Gravitación y conservación</div>
+      <h2>Tema 9 — Asistencia gravitatoria: cómo la Voyager ganó velocidad sin gastar combustible</h2>
+      <div class="tags"><span class="pill res">Recurso: Visualización de datos</span><span class="pill">F = GMm/r² · U = −GMm/r · conservación en el marco del planeta</span></div>
+    </div>
+  </div>
+  <div class="tema-body">
+    <div class="part">
+      <div class="part-label"><span class="letter">a</span>Caso de uso en Ingeniería del Software</div>
+      <h4><span class="i">(i)</span>El caso concreto</h4>
+      <p>La <b>Voyager 2</b> (NASA/JPL) despegó el 20 de agosto de 1977 y es la única nave que ha visitado Urano y Neptuno (NASA, s. f.-b). Su cohete solo le dio energía para llegar hasta Júpiter: sin ayuda, se habría quedado en una órbita cerrada entre la Tierra y Júpiter (NASA, s. f.-a). El resto del viaje lo pagaron los planetas. En 1966, Gary Flandro, en JPL, calculó que una alineación poco frecuente de Júpiter, Saturno, Urano y Neptuno permitía encadenar <b>asistencias gravitatorias</b> para visitarlos a todos (Flandro, 1966).</p>
+      <p>Este cálculo es trabajo de software. El sistema <b>Horizons</b> de JPL, de donde salen los datos de la gráfica, guarda la trayectoria de la Voyager 2 entre 1977 y 1989 como una trayectoria de <b>cónicas empalmadas</b> (<i>patched conics</i>): arcos de órbita alrededor del Sol unidos con hipérbolas alrededor de cada planeta, el mismo modelo con que se diseñan las misiones. Después de Neptuno usa un ajuste de los datos de rastreo hecho en 2022 con las efemérides DE440 (JPL, s. f.). Herramientas de código abierto como <b>GMAT</b>, de la NASA, se usan hoy para diseñar y optimizar este tipo de trayectorias (NASA, s. f.-c).</p>
+
+      <h4><span class="i">(ii)</span>El concepto físico como ecuación</h4>
+      <p>La gravitación universal da la fuerza y la energía potencial. La energía mecánica por kilogramo decide si la sonda está ligada al Sol (\(E &lt; 0\)) o se escapa (\(E \ge 0\)):</p>
+      <div class="eq">\[ F = \frac{G M m}{r^2}, \qquad U = -\frac{G M m}{r}, \qquad \frac{E}{m} = \frac{v^2}{2} - \frac{G M_\odot}{r}, \qquad v_{esc} = \sqrt{\frac{2 G M_\odot}{r}} \]</div>
+      <p><b>En el marco del planeta</b>, el encuentro dura horas y el planeta se puede tratar como fijo. Su gravedad es conservativa: la sonda entra y sale con la <b>misma rapidez</b> \(v_\infty\); solo cambia la dirección, en un ángulo \(\delta\) que depende de qué tan cerca pasa (\(r_p\)):</p>
+      <div class="eq">\[ \tfrac12 m v_{\infty,ent}^2 = \tfrac12 m v_{\infty,sal}^2, \qquad \operatorname{sen}\frac{\delta}{2} = \frac{1}{1 + r_p\, v_\infty^2/(G M_p)} \]</div>
+      <p><b>En el marco del Sol</b>, a esa velocidad se le suma la del planeta en su órbita, \(\vec V_p\). Como la dirección de \(\vec v_\infty\) cambió, la rapidez respecto al Sol cambia:</p>
+      <div class="eq">\[ \vec v = \vec V_p + \vec v_\infty \quad\Longrightarrow\quad v_{sal}^2 - v_{ent}^2 = 2\,\vec V_p\cdot\left(\vec v_{\infty,sal} - \vec v_{\infty,ent}\right), \qquad m\,\Delta\vec v = -M_p\,\Delta\vec V_p \]</div>
+      <p>La energía no sale de la nada: la sonda y el planeta intercambian momento lineal. Con \(m \approx 800\) kg (orden de magnitud) y \(\Delta v = 10\) km/s, Júpiter (\(1{,}9\times10^{27}\) kg) cambia su velocidad en unos \(4\times10^{-21}\) m/s, algo imposible de medir.</p>
+      <p><b>Comprobación con los datos de Horizons (Júpiter):</b> un mes antes, a \(r = 5{,}19\) UA, la Voyager 2 iba a \(9{,}98\) km/s, menos que la rapidez de escape a esa distancia (\(18{,}49\) km/s): \(E/m = \tfrac12(9{,}98)^2 - G M_\odot / r = -121\ \text{MJ/kg}\), ligada al Sol. Un mes después iba a \(19{,}98\) km/s y \(E/m = +36{,}6\ \text{MJ/kg}\): ya no volvería nunca. Mientras tanto, respecto a Júpiter entró a \(10{,}46\) km/s y salió a \(10{,}34\) km/s, prácticamente igual.</p>
+
+      <h4><span class="i">(iii)</span>¿Por qué modelar la gravedad y no usar una trayectoria precalculada?</h4>
+      <p>Un planetario o un videojuego pueden mostrar a la Voyager moviéndose por una curva guardada en una tabla. Pero para <b>diseñar</b> la misión hay que contestar preguntas que una tabla no responde: en qué fecha lanzar, a qué distancia pasar de Júpiter para llegar a Saturno, qué pasa si el paso se desvía 1000 km. La respuesta sale de las ecuaciones de arriba: \(r_p\) controla \(\delta\), y \(\delta\) controla cuánta velocidad se gana. El modelo también explica algo que una suposición del tipo “cada planeta acelera la nave” no explicaría: en Neptuno la Voyager 2 <b>perdió</b> 2,2 km/s respecto al Sol, porque pasó sobre el polo norte del planeta para acercarse a su luna Tritón y la desviación la llevó hacia el sur de la eclíptica.</p>
+      <div class="trade">
+        <div class="gain"><h5>Qué se gana</h5><ul>
+          <li>Misiones que serían imposibles con el combustible disponible: la Voyager 2 ganó unos 10 km/s solo en Júpiter.</li>
+          <li>Controlar el resultado eligiendo la geometría del paso (\(r_p\), lado del planeta), no quemando combustible.</li>
+          <li>Un modelo simple (cónicas empalmadas) basta para el diseño preliminar y para enseñar la idea.</li></ul></div>
+        <div class="cost"><h5>Qué cuesta</h5><ul>
+          <li>Ventanas de lanzamiento rígidas: la alineación que usó la Voyager no se repite en mucho tiempo.</li>
+          <li>Gran sensibilidad: un error pequeño en el paso por un planeta se amplifica en el siguiente; hacen falta efemérides precisas, rastreo y maniobras de corrección.</li>
+          <li>Las cónicas empalmadas son aproximadas; la navegación real integra el problema de muchos cuerpos.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="part">
+      <div class="part-label"><span class="letter">b</span>Recurso: visualización de datos</div>
+      <h3>Rapidez real de la Voyager 2 respecto al Sol, de 1977 a 1990</h3>
+      <p>Datos de NASA/JPL Horizons: distancia y rapidez de la Voyager 2 respecto al Sol cada 4 días, y cada hora cerca de cada planeta (1582 puntos). La línea punteada es la rapidez de escape del Sol a la distancia en que estaba la sonda: por encima de ella, la sonda ya no está ligada al sistema solar.</p>
+      <div class="resource">
+        <h3 style="font-size:1.02rem;margin:4px 0 6px">Gráfica 1 · Rapidez respecto al Sol en función del tiempo</h3>
+        <div class="chart-box tall"><canvas id="t9Speed" aria-label="Rapidez de la Voyager 2 respecto al Sol entre 1977 y 1990, con saltos en Júpiter, Saturno, Urano y Neptuno"></canvas></div>
+        <div class="controls">
+          <div class="ctrl" style="grid-column:1/-1"><label for="t9Slider"><span>Fecha analizada</span> <output id="t9Out"></output></label>
+            <input type="range" id="t9Slider" min="0" max="1581" step="1" value="0"></div>
+        </div>
+        <div class="btn-row" id="t9Jump">
+          <button class="btn ghost" data-d="1977-08-21">Lanzamiento</button>
+          <button class="btn ghost" data-d="1979-06-08">Antes de Júpiter</button>
+          <button class="btn ghost" data-d="1979-08-07">Después de Júpiter</button>
+          <button class="btn ghost" data-d="1981-09-25">Después de Saturno</button>
+          <button class="btn ghost" data-d="1986-02-23">Después de Urano</button>
+          <button class="btn ghost" data-d="1989-09-23">Después de Neptuno</button>
+        </div>
+        <div class="readout" id="t9Readout"></div>
+        <p class="chart-cap">Entre encuentros, la rapidez <b>baja</b> poco a poco: la sonda se aleja del Sol y convierte energía cinética en potencial, como una piedra lanzada hacia arriba. En cada planeta hay un salto. Los picos angostos son el paso cerca del planeta, donde su gravedad acelera y luego frena a la sonda; lo que importa es el nivel antes y después.</p>
+
+        <h3 style="font-size:1.02rem;margin:18px 0 6px">Gráfica 2 · El mismo encuentro visto desde el planeta y desde el Sol</h3>
+        <div class="btn-row" id="t9Enc">
+          <button class="btn" data-k="J">Júpiter · 1979</button>
+          <button class="btn ghost" data-k="S">Saturno · 1981</button>
+          <button class="btn ghost" data-k="U">Urano · 1986</button>
+          <button class="btn ghost" data-k="N">Neptuno · 1989</button>
+        </div>
+        <div class="chart-box tall"><canvas id="t9Planet" aria-label="Rapidez de la Voyager 2 respecto al planeta y respecto al Sol durante el encuentro"></canvas></div>
+        <div class="readout" id="t9EncReadout"></div>
+        <p class="chart-cap">Respecto al planeta (navy), la curva es simétrica: la sonda acelera al caer hacia él y frena al alejarse, y sale con la misma rapidez con que entró. Respecto al Sol (rosado), sale con otra rapidez. El desvío \(\delta\) se calcula con las altitudes de máximo acercamiento publicadas por NASA y los radios ecuatoriales de cada planeta.</p>
+
+        <h3 style="font-size:1.02rem;margin:18px 0 6px">Gráfica 3 · Ganancia o pérdida neta en cada encuentro</h3>
+        <div class="chart-box mid"><canvas id="t9Delta"></canvas></div>
+        <p class="chart-cap"><b>Fuente de los datos:</b> NASA/JPL Horizons (objeto −32, Voyager 2), vectores respecto al centro del Sol (500@10) y de cada planeta (500@599, 699, 799, 899), plano de la eclíptica J2000, consultados el 31 de octubre de 2026. Copia en <code>data/voyager2_horizons.csv</code> y <code>data/voyager2_marco_planeta.csv</code>. Según Horizons, el tramo 1977–1989 es una trayectoria de diseño por cónicas empalmadas ajustada a los encuentros, de precisión aproximada. \(\Delta v\) se mide entre 30 días antes y 30 días después del máximo acercamiento; \(G M_\odot = 1{,}327\times10^{11}\ \text{km}^3/\text{s}^2\). Gráficas elaboradas con Claude Opus 5.5 (Anthropic, 2026); parámetros y verificación de la autora.</p>
+      </div>
+      <div class="note"><strong>Qué observar:</strong> al despegar, la sonda iba a 39 km/s, pero la gravedad del Sol la frenó hasta menos de 10 km/s al llegar a Júpiter. Ahí ganó 10 km/s y cruzó la línea de escape el 9 de julio de 1979, el mismo día del máximo acercamiento. Saturno sumó 4,8 km/s y Urano 1,8 km/s. En Neptuno la rapidez <b>bajó</b> 2,2 km/s, pero la sonda ya tenía energía de sobra para salir del sistema solar. <strong>Pruebe:</strong> en la Gráfica 2, compare Urano (curva navy casi perfectamente simétrica, 14,79 → 14,80 km/s) con lo que pasa respecto al Sol.</div>
+    </div>
+
+    <div class="connect"><b>Conexiones.</b> Con el <a href="#tema-7">Tema 7</a>: en el marco del planeta, el encuentro es un choque elástico (\(e = 1\)) con una “pared” que se mueve; igual que una pelota que rebota en una raqueta que avanza, sale más rápido respecto al suelo. Con el <a href="#tema-6">Tema 6</a>: allá la energía cinética se iba a la batería o a calor; aquí se transforma en potencial gravitatoria y vuelve, sin pérdidas. Con el <a href="#tema-8">Tema 8</a>: tanto el satélite como la sonda cambian su movimiento sin empujarse contra nada, porque intercambian momento con otro cuerpo. Con el <a href="#tema-3">Tema 3</a>: los planetas siguen órbitas casi circulares con \(V_p = \sqrt{GM_\odot/r}\), la misma fuerza centrípeta, ahora aportada por la gravedad. En clase: ley de gravitación universal, energía potencial gravitatoria, rapidez de escape y conservación del momento lineal.</div>
+    <div class="sources"><b>Fuentes:</b><ol>
+      <li>Jet Propulsion Laboratory. (s. f.). <i>Horizons System</i> [Efemérides de la Voyager 2, objeto −32]. NASA/JPL Solar System Dynamics. <a href="https://ssd.jpl.nasa.gov/horizons/" target="_blank" rel="noopener">ssd.jpl.nasa.gov/horizons</a></li>
+      <li>NASA. (s. f.-a). <i>Basics of spaceflight: A gravity assist primer</i>. NASA Science. <a href="https://science.nasa.gov/learn/basics-of-space-flight/primer/" target="_blank" rel="noopener">science.nasa.gov</a></li>
+      <li>NASA. (s. f.-b). <i>Voyager 2: First to visit all four giants</i>. NASA Science. <a href="https://science.nasa.gov/mission/voyager/voyager-2" target="_blank" rel="noopener">science.nasa.gov</a></li>
+      <li>NASA. (s. f.-c). <i>General Mission Analysis Tool (GMAT)</i>. NASA Software Catalog. <a href="https://software.nasa.gov/software/GSC-19640-1" target="_blank" rel="noopener">software.nasa.gov</a></li>
+      <li>Flandro, G. A. (1966). Fast reconnaissance missions to the outer solar system using energy derived from the gravitational field of Jupiter. <i>Astronautica Acta, 12</i>, 329–337.</li>
+    </ol></div>
+  </div>
+</article>
+
+<!-- ======================================================= -->
 <!-- PRÓXIMOS AVANCES                                        -->
 <!-- ======================================================= -->
-<section class="block" id="avance-2">
-  <h2 class="section-title">Avance 2 <span class="pill soon" style="color:var(--deep-pink);vertical-align:middle">Próximamente</span></h2>
-  <p class="section-sub">Temas restantes de la segunda entrega, que seguirán la misma estructura.</p>
-  <div class="grid-2">
-    <div class="future-card"><div class="n">TEMA 8</div><h4>Ruedas de reacción en satélites</h4></div>
-    <div class="future-card"><div class="n">TEMA 9</div><h4>Asistencia gravitatoria de la Voyager</h4></div>
-  </div>
-</section>
 <section class="block" id="entrega-final">
   <h2 class="section-title">Entrega final <span class="pill soon" style="color:var(--deep-pink);vertical-align:middle">Próximamente</span></h2>
   <div class="grid-2">
@@ -794,7 +1102,7 @@
 <section class="block" id="uso-ia">
   <h2 class="section-title">Uso de inteligencia artificial</h2>
   <div class="card">
-    <p>Para la creación de las imágenes y figuras de este portafolio se utilizó Claude, versión Opus 5.5 (Anthropic, 2026): las gráficas de los temas 1, 4 y 6, el diagrama del tema 3, el video del tema 5 y las simulaciones de los temas 2 y 7. El modelo, los parámetros y las fuentes de cada figura se declaran en su pie.</p>
+    <p>Para la creación de las imágenes y figuras de este portafolio se utilizó Claude, versión Opus 5.5 (Anthropic, 2026): las gráficas de los temas 1, 4, 6 y 9, los diagramas de los temas 3 y 8, el video del tema 5 y las simulaciones de los temas 2 y 7. El modelo, los parámetros y las fuentes de cada figura se declaran en su pie.</p>
   </div>
 </section>
 
@@ -807,18 +1115,27 @@
     <ol class="refs">
       <li>Anthropic. (2026). <i>Claude</i> (versión Opus 5.5) [Modelo de lenguaje grande]. https://claude.ai</li>
       <li>Apple Inc. (s. f.). <i>GCDualSenseAdaptiveTrigger</i>. Apple Developer Documentation. https://developer.apple.com/documentation/gamecontroller/gcdualsenseadaptivetrigger</li>
+      <li>AVS Lab. (s. f.). <i>Basilisk</i> [Código fuente]. GitHub. https://github.com/AVSLab/basilisk</li>
       <li>Brooker, A., Gonder, J., Wang, L., Wood, E., Lopp, S., y Ramroth, L. (2015). <i>FASTSim: A model to estimate vehicle efficiency, cost and performance</i> (SAE Technical Paper 2015-01-0973). National Renewable Energy Laboratory. https://www.nrel.gov/docs/fy15osti/63623.pdf</li>
       <li>Catto, E. (s. f.). <i>b2FixtureDef struct reference</i>. Box2D 2.4.1 Documentation. https://box2d.org/documentation/structb2_fixture_def.html</li>
       <li>Colgate, J. E., y Schenkel, G. G. (1997). Passivity of a class of sampled-data systems: Application to haptic interfaces. <i>Journal of Robotic Systems, 14</i>(1), 37–47.</li>
       <li>EA Sports / Codemasters. (2025). <i>F1® 25 UDP Specification</i>. EA Forums. https://forums.ea.com/discussions/f1-25-general-discussion-en/discussion-f1%c2%ae-25-udp-specification/12187351</li>
       <li>Fiedler, G. (2004). <i>Fix your timestep!</i> Gaffer On Games. https://gafferongames.com/post/fix_your_timestep/</li>
+      <li>Flandro, G. A. (1966). Fast reconnaissance missions to the outer solar system using energy derived from the gravitational field of Jupiter. <i>Astronautica Acta, 12</i>, 329–337.</li>
       <li>Flash, T., y Hogan, N. (1985). The coordination of arm movements: An experimentally confirmed mathematical model. <i>Journal of Neuroscience, 5</i>(7), 1688–1703.</li>
       <li>Globus, A., y Hall, T. (2017). Space settlement population rotation tolerance. <i>NSS Space Settlement Journal</i>.</li>
       <li>Hall, T. W. (s. f.). <i>SpinCalc: An artificial-gravity calculator</i>. http://www.artificial-gravity.com/sw/SpinCalc/</li>
       <li>International Tennis Federation. (2023). <i>ITF approved tennis balls, classified surfaces &amp; recognised courts 2023: A guide to products and test methods</i>. https://www.itftennis.com/media/4420/2023-technical-booklet.pdf</li>
+      <li>Jet Propulsion Laboratory. (s. f.). <i>Horizons System</i> [Efemérides de la Voyager 2, objeto −32]. NASA/JPL Solar System Dynamics. https://ssd.jpl.nasa.gov/horizons/</li>
       <li>Johnson, R. D., y Holbrow, C. (Eds.). (1977). <i>Space settlements: A design study</i> (NASA SP-413). NASA.</li>
+      <li>Kenneally, P. W., Piggott, S., y Schaub, H. (2020). Basilisk: A flexible, scalable and modular astrodynamics simulation framework. <i>Journal of Aerospace Information Systems, 17</i>(9), 496–507. https://doi.org/10.2514/1.I010762</li>
       <li>Mellinger, D., y Kumar, V. (2011). Minimum snap trajectory generation and control for quadrotors. En <i>IEEE International Conference on Robotics and Automation</i> (pp. 2520–2525).</li>
       <li>Mueller, M. W., Hehn, M., y D’Andrea, R. (2015). A computationally efficient motion primitive for quadrocopter trajectory generation. <i>IEEE Transactions on Robotics, 31</i>(6), 1294–1310.</li>
+      <li>NASA. (2013, 26 de noviembre). <i>How NASA revived the Kepler space telescope</i>. Phys.org. https://phys.org/news/2013-11-nasa-revived-kepler-space-telescope.html</li>
+      <li>NASA. (s. f.-a). <i>Basics of spaceflight: A gravity assist primer</i>. NASA Science. https://science.nasa.gov/learn/basics-of-space-flight/primer/</li>
+      <li>NASA. (s. f.-b). <i>Voyager 2: First to visit all four giants</i>. NASA Science. https://science.nasa.gov/mission/voyager/voyager-2</li>
+      <li>NASA. (s. f.-c). <i>General Mission Analysis Tool (GMAT)</i>. NASA Software Catalog. https://software.nasa.gov/software/GSC-19640-1</li>
+      <li>NASA Engineering and Safety Center. (s. f.). <i>Tackling hybrid control is right in the GNC wheelhouse</i>. NASA. https://www.nasa.gov/sites/default/files/atoms/files/gnc_wheelhouse.pdf</li>
       <li>National Renewable Energy Laboratory. (s. f.). <i>FASTSim: Future Automotive Systems Technology Simulator</i> [Software y ciclos de manejo]. GitHub. https://github.com/NREL/fastsim</li>
       <li>National Space Society. (s. f.). <i>Stanford Torus Space Settlement</i>. https://nss.org/stanford-torus-space-settlement/</li>
       <li>Nissan Motor Co. (2017, 6 de diciembre). <i>e-Pedal: Easy driving using only the accelerator pedal</i>. https://global.nissannews.com/en/releases/e-pedal-easy-driving-using-only-the-accelerator-pedal</li>
@@ -859,5 +1176,8 @@
 <script src="js/tema6-datos.js"></script>
 <script src="js/tema6.js"></script>
 <script src="js/tema7.js"></script>
+<script src="js/tema8.js"></script>
+<script src="js/tema9-datos.js"></script>
+<script src="js/tema9.js"></script>
 </body>
 </html>
